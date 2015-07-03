@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="SQLite -" uuid="e2b1a5bd-d3f9-4e5b-8289-93c4aa936cc7">
+    <database-info product="SQLite" version="3.8.9" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native"/>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed"/>
+    <schema name="" catalog=""/>
+  </data-source>
+</component>

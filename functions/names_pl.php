@@ -5,5 +5,5 @@
  * Date: 2015-07-02
  * Time: 17:22
  */
-$title="Zarządzanie życiem";
+$title="Zarządzanie firmą";
 ?>

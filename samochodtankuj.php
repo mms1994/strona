@@ -13,7 +13,7 @@ while ($row = mysql_fetch_array($zapytanie, MYSQL_ASSOC)) {
     $numer=$row['numer'];
     $ulica=$row['ulica'];
     $miejscowosc=$row['miejscowosc'];
-    $selecty='<option value="'.$id.'">'.$nazwa.', '.$miejscowosc.', '.$ulica.' '.$numer.'</option>';
+    $selecty.='<option value="'.$id.'">'.$nazwa.', '.$miejscowosc.', '.$ulica.' '.$numer.'</option>';
 }
 
 echo ('Wybierz stację paliw:<br />');

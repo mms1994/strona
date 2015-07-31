@@ -18,6 +18,8 @@ while ($row = mysql_fetch_array($zapytanie, MYSQL_ASSOC)) {
 
 echo ('Wybierz stację paliw:<br />');
 echo ('<form method="post" action="samochodtankuj2.php"><input type="hidden" name="car_ID" value='.$car_ID.' /><select name="stacja_ID"> '.$selecty.' </select>&nbsp;<input type="submit" value="Dalej"/>&nbsp;</form>');
+echo ('Brak stacji paliw?<form method="post" action="stacjadodaj.php"><input type="hidden" name="car_ID" value='.$car_ID.' />&nbsp;<input type="submit" value="Dodaj"/>&nbsp;</form>');
+
 
 ?>
 

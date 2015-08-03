@@ -37,6 +37,7 @@ $car_ID=$_POST['id'];
         $numer=$row2['numer'];
         $Stacja=$nazwa.', '.$miejscowosc.', '.$ulica.' '.$numer;
         $tankowanie_ID=$row['id'];
+        $pk="pliki/potwierdzeniaplatnosci/paliwo/".$car_ID."_".$tankowanie_ID.".pdf";
         ?>
         <tr>
             <td>&nbsp;<?php echo $Data; ?>&nbsp;</td>
@@ -46,13 +47,22 @@ $car_ID=$_POST['id'];
             <td>&nbsp;<?php echo $Dystans; ?>&nbsp;</td>
             <td>&nbsp;<?php echo $Cena; ?>&nbsp;</td>
             <td>&nbsp;<?php echo $Stacja; ?>&nbsp;</td>
-            <td>&nbsp; <form method="post" action="samochodparagon.php" enctype="multipart/form-data">&nbsp;<input type="hidden" name="car_ID" value="<?php echo $car_ID ?>" /><input type="hidden" name="tankowanie_ID" value="<?php echo $tankowanie_ID ?>" /><input type="file" name="plik" accept="image/jpeg,image/gif,image/png,application/pdf" required /><input type="submit" value="Wyślij"/>&nbsp;</form> &nbsp;</td>
+            <td>&nbsp;<?php if(file_exists($pk))
+                {
+                    echo '<a target="_blank" href="'.$pk.'"><button type="button">&nbsp;POTWIERDZENIE&nbsp;</button></a>';
+                }
+                else {
+                    ?>
+                    <form method="post" action="samochodparagon.php" enctype="multipart/form-data"<input type="hidden" name="car_ID" value="<?php echo $car_ID ?>"/><input type="hidden" name="tankowanie_ID" value="<?php echo $tankowanie_ID ?>"/><input type="file" name="plik" accept="application/pdf" required/><input type="submit" value="Wyślij"/> </form>
+                    <?php
+                }
+                    ?>&nbsp;</td>
         </tr>
         <?php
     }
     ?>
 </table>
-Dopuszczalne rozszerzenia plików z paragonem/fakturą to GIF, JPEG(JPG), PNG oraz PDF!
+Dopuszczalne rozszerzenie plików z paragonem/fakturą to PDF!
 <?php
 include('template/footer.php');
 ?>

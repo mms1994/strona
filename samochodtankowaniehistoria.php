@@ -16,6 +16,7 @@ $car_ID=$_POST['id'];
             <td>&nbsp;Dystans&nbsp;</td>
             <td>&nbsp;Cena za litr&nbsp;</td>
             <td>&nbsp;Stacja paliw&nbsp;</td>
+            <td>&nbsp;Potwierdzenie płatności&nbsp;</td>
         </tr>
 
     <?php
@@ -35,6 +36,7 @@ $car_ID=$_POST['id'];
         $ulica=$row2['ulica'];
         $numer=$row2['numer'];
         $Stacja=$nazwa.', '.$miejscowosc.', '.$ulica.' '.$numer;
+        $tankowanie_ID=$row['id'];
         ?>
         <tr>
             <td>&nbsp;<?php echo $Data; ?>&nbsp;</td>
@@ -44,12 +46,13 @@ $car_ID=$_POST['id'];
             <td>&nbsp;<?php echo $Dystans; ?>&nbsp;</td>
             <td>&nbsp;<?php echo $Cena; ?>&nbsp;</td>
             <td>&nbsp;<?php echo $Stacja; ?>&nbsp;</td>
+            <td>&nbsp; <form method="post" action="samochodparagon.php" enctype="multipart/form-data">&nbsp;<input type="hidden" name="car_ID" value="<?php echo $car_ID ?>" /><input type="hidden" name="tankowanie_ID" value="<?php echo $tankowanie_ID ?>" /><input type="file" name="plik" accept="image/jpeg,image/gif,image/png,application/pdf" required /><input type="submit" value="Wyślij"/>&nbsp;</form> &nbsp;</td>
         </tr>
         <?php
     }
     ?>
 </table>
-
+Dopuszczalne rozszerzenia plików z paragonem/fakturą to GIF, JPEG(JPG), PNG oraz PDF!
 <?php
 include('template/footer.php');
 ?>

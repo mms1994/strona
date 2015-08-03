@@ -53,7 +53,7 @@ $car_ID=$_POST['id'];
                 }
                 else {
                     ?>
-                    <form method="post" action="samochodparagon.php" enctype="multipart/form-data"<input type="hidden" name="car_ID" value="<?php echo $car_ID ?>"/><input type="hidden" name="tankowanie_ID" value="<?php echo $tankowanie_ID ?>"/><input type="file" name="plik" accept="application/pdf" required/><input type="submit" value="Wyślij"/> </form>
+                    <form method="post" action="samochodparagon.php" enctype="multipart/form-data"><input type="hidden" name="car_ID" value="<?php echo $car_ID; ?>"/><input type="hidden" name="tankowanie_ID" value="<?php echo $tankowanie_ID ?>"/><input type="file" name="plik" accept="application/pdf" required/><input type="submit" value="Wyślij"/> </form>
                     <?php
                 }
                     ?>&nbsp;</td>

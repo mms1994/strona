@@ -49,14 +49,17 @@ $car_ID=$_POST['id'];
             <td>&nbsp;<?php echo $Stacja; ?>&nbsp;</td>
             <td>&nbsp;<?php if(file_exists($pk))
                 {
-                    echo '<a target="_blank" href="'.$pk.'"><button type="button">&nbsp;POTWIERDZENIE&nbsp;</button></a>';
+                    echo '<a target="_blank" href="'.$pk.'"><button type="button">&nbsp;PODGLĄD&nbsp;</button></a>&nbsp;';
+                    ?>
+                    <form method="post" onsubmit="return confirm(\'Czy na pewno chcesz skasować?\');" action="samochodparagonusun.php"><input type="hidden" name="tankowanie_ID" value="<?php echo $tankowanie_ID ?>"/><input type="hidden" name="car_ID" value="<?php echo $car_ID; ?>"/><input type="submit" value="Usuń"/></form> <?php
                 }
                 else {
                     ?>
                     <form method="post" action="samochodparagon.php" enctype="multipart/form-data"><input type="hidden" name="car_ID" value="<?php echo $car_ID; ?>"/><input type="hidden" name="tankowanie_ID" value="<?php echo $tankowanie_ID ?>"/><input type="file" name="plik" accept="application/pdf" required/><input type="submit" value="Wyślij"/> </form>
+                    &nbsp;
                     <?php
                 }
-                    ?>&nbsp;</td>
+                    ?></td>
         </tr>
         <?php
     }

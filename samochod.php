@@ -11,9 +11,12 @@ if (user::isLogged()) {
 
     echo '<p>Jesteś zalogowany, witaj '.$user['login'].'!</p>';
     echo 'Aby się <a href="logout.php">wylogować</a></p>';
+    $log=$user['login'];
+    $ide = mysql_fetch_array(mysql_query("SELECT id FROM users WHERE login='$log' LIMIT 1;"));
+    $id=$ide['id'];
     ?>
     <br /><hr><br />
-    Lista Twoich samochodów:<br />
+    Lista Twoich samochodów:<form method="post" action="samochoddodaj.php"><input type="hidden" name="id" value='<?php echo $id; ?>' />&nbsp;<input type="submit" value="Dodaj pojazd"/>&nbsp;</form><br />
     <table border="1">
         <tr>
             <td>&nbsp;NR REJESTRACYJNY&nbsp;</td>
@@ -26,9 +29,6 @@ if (user::isLogged()) {
         </tr>
     <?php
     // pobranie ID użytkownika
-    $log=$user['login'];
-    $ide = mysql_fetch_array(mysql_query("SELECT id FROM users WHERE login='$log' LIMIT 1;"));
-    $id=$ide['id'];
     $zapytanie = mysql_query("SELECT * FROM cars WHERE wl='$id'");
     while ($row = mysql_fetch_array($zapytanie, MYSQL_ASSOC)) {
         $NrRej=$row['nrrej'];

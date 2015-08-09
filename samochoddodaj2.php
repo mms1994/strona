@@ -11,7 +11,7 @@ $przebieg=$_POST['przebieg'];
 $vin=$_POST['vin'];
 $nrrej=$_POST['nrrej'];
 
-$zapytanie = "INSERT INTO cars VALUES ('', '$marka', '$model', '$rocznik', '$przebieg', '$wl', '$vin', '$nrrej')";
+$zapytanie = "INSERT INTO cars VALUES ('', '$marka', '$model', '$rocznik', '$przebieg', '$wl', '$vin', '$nrrej', '0')";
 $wynik = mysql_query($zapytanie);
 
 if ($wynik) {

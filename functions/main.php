@@ -8,6 +8,7 @@
 date_default_timezone_set("Europe/Warsaw");
 // includes
 include("base.php");
-require_once 'user.class.php';
+require_once ('user.class.php');
 include("names_pl.php");
 ?>
+

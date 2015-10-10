@@ -6,6 +6,7 @@ include("functions/main.php");
 <!DOCTYPE html>
 <head>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="functions/prototype.js"></script>
    <script type="text/javascript">
         $(document).ready(function(){
 
@@ -55,33 +56,6 @@ include("functions/main.php");
             .cookie-bar .close {position: relative; display:block; width:96%; margin:5px 2%; top:0; right:0;}
         }
     </style>
-    <script type="text/javascript">
-        $.cookie=function(name,value,options){if(typeof value!='undefined'){options=options||{};if(value===null){value='';options.expires=-1}var expires='';if(options.expires&&(typeof options.expires=='number'||options.expires.toUTCString)){var date;if(typeof options.expires=='number'){date=new Date();date.setTime(date.getTime()+(options.expires*24*60*60*1000))}else{date=options.expires}expires='; expires='+date.toUTCString()}var path=options.path?'; path='+(options.path):'';var domain=options.domain?'; domain='+(options.domain):'';var secure=options.secure?'; secure':'';document.cookie=[name,'=',encodeURIComponent(value),expires,path,domain,secure].join('')}else{var cookieValue=null;if(document.cookie&&document.cookie!=''){var cookies=document.cookie.split(';');for(var i=0;i<cookies.length;i++){var cookie=jQuery.trim(cookies[i]);if(cookie.substring(0,name.length+1)==(name+'=')){cookieValue=decodeURIComponent(cookie.substring(name.length+1));break}}}return cookieValue}};
-        function destroyCookie() {
-            $.cookie('hideCookieBar', 1, {expires: 365})
-        }
-        $(function () {
-            if ($.cookie('hideCookieBar')) {
-                $('.cookie-bar').remove();
-            } else {
-                $('.cookie-bar').show();
-            }
-            $(document).keyup(function (e) {
-                e.preventDefault();
-                if (e.keyCode == 27) {
-                    $('.cookie-bar .close').click();
-                }
-            });
-            $('.cookie-bar .close').on('click', function (e) {
-                e.preventDefault();
-                $(this).parents('.cookie-bar').slideUp(), function () {
-                    destroyCookie();
-                }
-                )
-                ;
-            });
-        })
-    </script>
 
 <div id="body">
 <br /><br />

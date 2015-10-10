@@ -17,8 +17,8 @@ class user {
      * @return array
      */
     public static function getData ($login, $pass) {
-        if ($login == '') $login = $_SESSION['login'];
-        if ($pass == '') $pass = $_SESSION['pass'];
+        if ($login == '') $login = $_COOKIE['login'];
+        if ($pass == '') $pass = $_COOKIE['pass'];
 
         self::$user = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE login='$login' AND pass='$pass' LIMIT 1;"));
         return self::$user;
@@ -42,7 +42,7 @@ class user {
      * @return bool
      */
     public static function isLogged () {
-        if (empty($_SESSION['login']) || empty($_SESSION['pass'])) {
+        if (empty($_COOKIE['login']) || empty($_COOKIE['pass'])) {
             return false;
         }
 

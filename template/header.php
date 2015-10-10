@@ -1,5 +1,6 @@
 <?php
-session_start();
+ob_start();
+
 include("functions/main.php");
 ?>
 <!DOCTYPE html>
@@ -38,9 +39,6 @@ include("functions/main.php");
 
 <body>
 
-<?php
-if (!isset($_COOKIE['cookieInfo'])): //cokie bar begin
-    ?>
     <div class="cookie-bar">
         <div>
             W ramach naszej witryny stosujemy pliki cookies, aby ułatwić Ci korzystanie z naszego serwisu oraz do celów statystycznych. Korzystanie z witryny bez zmiany ustawień dotyczących plików cookies oznacza zgodę na ich użycie oraz zapisanie w pamięci urządzenia. Możesz samodzielnie zarządzać cookies i dokonać zmiany ustawień w swojej przeglądarce.<br>
@@ -84,9 +82,6 @@ if (!isset($_COOKIE['cookieInfo'])): //cokie bar begin
             });
         })
     </script>
-<?php
-endif; //end cookie bar
-?>
 
 <div id="body">
 <br /><br />

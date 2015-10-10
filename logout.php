@@ -4,8 +4,8 @@ include('template/header.php');
 
 <?php
 
-session_destroy();
-$_SESSION = array ();
+setcookie("login","");
+setcookie("pass","");
 echo '<p class="success">Zostałeś wylogowany! Możesz przejść na <a href="index.php">stronę główną</a></p>';
 
 ?>

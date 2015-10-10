@@ -4,7 +4,7 @@ include('template/header.php');
 <?php
 // Zabezpiecz zmienne odebrane z formularza, przed atakami SQL Injection
 $login = htmlspecialchars(mysql_real_escape_string($_POST['login']));
-$pass = mysql_real_escape_string($_POST['pass']);
+$pass = htmlspecialchars(mysql_real_escape_string($_POST['pass']));
 
 if ($_POST['send'] == 1) {
     // Sprawdź, czy wszystkie pola zostały uzupełnione
@@ -31,8 +31,8 @@ if ($_POST['send'] == 1) {
         $user = user::getData($login, $pass); // Pobierz dane użytknika do tablicy i zapisz ją do zmiennej $user
 
         // Przypisz pobrane dane do sesji
-        $_SESSION['login'] = $login;
-        $_SESSION['pass'] = $pass;
+        setcookie("login",$login);
+        setcookie("pass", $pass);
 
         echo '<p class="success">Zostałeś zalogowany. Możesz przejść na <a href="index.php">stronę główną</a></p>';
     }

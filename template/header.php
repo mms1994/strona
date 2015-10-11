@@ -8,7 +8,7 @@ include("functions/main.php");
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="functions/prototype.js"></script>
    <script type="text/javascript">
-        $(document).ready(function(){
+        /*$(document).ready(function(){
 
             $(".toggle_container").hide();
             $("h2.trigger").click(function() {
@@ -22,7 +22,7 @@ include("functions/main.php");
                     $("h2.trigger").not($(this)).removeClass("active");
                 }
             });
-        });
+        });*/
     </script>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 

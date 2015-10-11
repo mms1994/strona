@@ -42,8 +42,10 @@ include("functions/main.php");
 
     <div class="cookie-bar">
         <div>
-            W ramach naszej witryny stosujemy pliki cookies, aby ułatwić Ci korzystanie z naszego serwisu oraz do celów statystycznych. Korzystanie z witryny bez zmiany ustawień dotyczących plików cookies oznacza zgodę na ich użycie oraz zapisanie w pamięci urządzenia. Możesz samodzielnie zarządzać cookies i dokonać zmiany ustawień w swojej przeglądarce.<br>
-            </div>
+            W ramach naszej witryny stosujemy pliki cookies, aby ułatwić Ci korzystanie z naszego serwisu oraz do celów statystycznych. Korzystanie z witryny bez zmiany ustawień dotyczących plików cookies oznacza zgodę na ich użycie oraz zapisanie w pamięci urządzenia. Możesz samodzielnie zarządzać cookies i dokonać zmiany ustawień w swojej przeglądarce. <br /><center>Jednak pamiętaj, że są one wymagane do wykorzystania strony w pełni.</center><br>
+
+            <script type="javascript"></script><noscript><font color="red"><h2><center>Do korzystania z strony w pełni niezbędny jest JavaScript! Włącz go!</center></h2></font></noscript>
+        </div>
     </div>
     <style type="text/css">
         .cookie-bar {position:relative; background:#eee; overflow:hidden; box-shadow:inset 0 -1px 1px rgba(0, 0, 0, 0.2);}

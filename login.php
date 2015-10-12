@@ -31,7 +31,7 @@ if ($_POST['send'] == 1) {
         $user = user::getData($login, $pass); // Pobierz dane użytknika do tablicy i zapisz ją do zmiennej $user
 
         // Przypisz pobrane dane do sesji
-        setcookie("login",$login,time()+3600);
+        setcookie("login",$login,time()+3600*4);
         //setcookie("pass", $pass);
 
         echo '<p class="success">Zostałeś zalogowany. Możesz przejść na <a href="index.php">stronę główną</a></p>';

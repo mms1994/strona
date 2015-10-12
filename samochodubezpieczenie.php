@@ -1,10 +1,58 @@
 <?php
 include('template/header.php');
 ?>
-
+    <script language="JavaScript">
+        var blad=0;
+        function polisaCheck() {
+            document.getElementById('bladpolisa').innerHTML="";
+            if(!document.formularz.nr_polisy.value) {
+                blad++;
+                document.getElementById('bladpolisa').innerHTML="Uzupełnij pole nr polisy<br />";
+            }
+        }
+        function uwagiCheck() {
+            document.getElementById('bladuwagi').innerHTML="";
+            if(!document.formularz.uwagi.value) {
+                blad++;
+                document.getElementById('bladuwagi').innerHTML="Uzupełnij pole uwagi<br />";
+            }
+        }
+        function kosztCheck() {
+            document.getElementById('bladkoszt').innerHTML=="";
+            if(!document.formularz.koszt.value) {
+                blad++;
+                document.getElementById('bladkoszt').innerHTML="Uzupełnij pole koszt<br />";
+            }
+        }
+        function check() {
+            blad=0;
+            polisaCheck();
+            uwagiCheck();
+            kosztCheck();
+            if(blad==0)
+                return true;
+            else
+                return false;
+        }
+    </script>
 <?php
 $car_ID=$_POST['id'];
 ?>
+    <form method="post" name="formularz" action="samochodubezpieczeniedodaj.php"><input type="hidden" name="car_ID" value="<?php echo $car_ID; ?>"/>
+        <b>DODAJ NOWE UBEZPIECZENIE</b><br />
+        <b>Rodzaj</b>:<br />
+        <select name="rodzaj"><option value="OC">OC</option><option value="AC">AC</option><option value="NNW">NNW</option><option value="Assistance">Assistance</option><option value="inne">inne</option></select><br />
+        W przypadku wyboru "inne" w polu uwagi opisz ubezpieczenie!<br />
+        <b>Nr polisy</b>:<br /><input type="text" name="nr_polisy" id="nr_polisy" onblur="polisaCheck()" placeholder="Wpisz nr polisy" required /><br />
+        <div id="bladpolisa" class="blad"></div>
+        <b>Początek okresu ubezpieczenia</b>:<br /><input type="date" name="data_start" id="data_start" required placeholder="YYYY-MM-DD" pattern="^((?:20)\d\d)[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$" /><br />
+        <b>Koniec okresu ubezpieczenia</b>:<br /><input type="date" name="data_koniec" id="data_koniec" required placeholder="YYYY-MM-DD" pattern="^((?:20)\d\d)[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$" /><br />
+        <b>Koszt serwisu</b>:<br /><input type="number" name="koszt" onblur="kosztCheck()" placeholder="Wpisz koszt ubezpieczenia" required /><br />
+        <div id="bladkoszt" class="blad"></div>
+        <b>Uwagi</b>:(wielkość pola możesz sobie zmieniać w zależności od potrzeb)<br /><textarea name="uwagi" onblur="uwagiCheck()" placeholder="Wpisz dodatkowe uwagi lub informacje" required ></textarea><br />
+        <div id="bladuwagi" class="blad"></div>
+        <input type="submit" value="Dodaj"/> </form>
+<br /><br />
     <table border="1">
         <tr>
             <td>&nbsp;Rodzaj&nbsp;</td>

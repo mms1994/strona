@@ -62,10 +62,10 @@ echo ('Stacja paliw: '.$nazwa.', '.$miejscowosc.', '.$ulica.' '.$numer.'<br />')
 echo ('<form method="post" action="samochodserwisuj3.php" name="formularz" id="formularz" onsubmit="return check()">
 <input type="hidden" name="car_ID" value='.$car_ID.' />
 <input type="hidden" name="stacja_ID" value='.$stacja_ID.' />
-<b>Data oddania do serwisu</b>:<br /><input type="date" name="data_start" id="data_start" required placeholder="YYYY-MM-DD" /><br />
+<b>Data oddania do serwisu</b>:<br /><input type="date" name="data_start" id="data_start" required placeholder="YYYY-MM-DD" pattern="^((?:20)\d\d)[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$" /><br />
 <b>Podaj przebieg przy oddaniu</b>:<br /><input type="number" name="przebieg_start" id="przebieg_start" onblur="przebiegCheck()" placeholder="Wpisz przebieg" required /><br />
 <div id="bladprzebieg" class="blad"></div>
-<b>Data odebrania z serwisu</b>:<br /><input type="date" name="data_koniec" id="data_koniec" required placeholder="YYYY-MM-DD" /><br />
+<b>Data odebrania z serwisu</b>:<br /><input type="date" name="data_koniec" id="data_koniec" required placeholder="YYYY-MM-DD" pattern="^((?:20)\d\d)[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$" /><br />
 <b>Podaj przebieg przy odebraniu</b>:<br /><input type="number" name="przebieg_koniec" id="przebieg_koniec" onblur="przebieg2Check()" placeholder="Wpisz przebieg" required /><br />
 <div id="bladprzebieg2" class="blad"></div>
 <b>Koszt serwisu</b>:<br /><input type="number" name="koszt" onblur="kosztCheck()" placeholder="Wpisz koszt serwisu" required /><br />

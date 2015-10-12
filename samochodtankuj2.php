@@ -70,7 +70,7 @@ echo ('Stacja paliw: '.$nazwa.', '.$miejscowosc.', '.$ulica.' '.$numer.'<br />')
 echo ('<form method="post" action="samochodtankuj3.php" name="formularz" id="formularz" onsubmit="return check()">
 <input type="hidden" name="car_ID" value='.$car_ID.' />
 <input type="hidden" name="stacja_ID" value='.$stacja_ID.' />
-<b>Data tankowania</b>:<br /><input type="date" name="data" id="data" required placeholder="YYYY-MM-DD" /><br />
+<b>Data tankowania</b>:<br /><input type="date" name="data" id="data" required placeholder="YYYY-MM-DD" pattern="^((?:20)\d\d)[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$" /><br />
 <b>Przebieg na koniec</b> (lub dystans):<br /><input type="number" name="przebieg" id="przebieg" onblur="przebiegCheck()" placeholder="Wpisz przebieg" /><br />
 <div id="bladprzebieg" class="blad"></div>
 <b>Dystans</b> (lub przebieg):<br /><input type="number" name="dystans" onblur="dystansCheck()" placeholder="Wpisz przebyty dystans" /><br />

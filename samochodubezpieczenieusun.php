@@ -13,7 +13,7 @@ if($_POST['rodzaj']=="polisa") {
         echo 'Błąd. Spróbuj ponownie później.<br />';
     }
 }
-if($_POST['rodzaj']=="potwierdzenie") {
+else if($_POST['rodzaj']=="potwierdzenie") {
 
     if (unlink('pliki/potwierdzenieplatnosci/ubezpieczenie/' . $car_ID . '_' . $ubezpieczenie_ID . '.pdf')) {
         echo 'Operacja zakończona pomyślnie.<br />';

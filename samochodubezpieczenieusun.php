@@ -5,8 +5,6 @@ include('template/header.php');
 $car_ID=$_POST['car_ID'];
 $ubezpieczenie_ID = $_POST['ubezpieczenie_ID'];
 if($_POST['rodzaj']=="polisa") {
-
-
     if (unlink('pliki/polisy/komunikacyjne/' . $car_ID . '_' . $ubezpieczenie_ID . '.pdf')) {
         echo 'Operacja zakończona pomyślnie.<br />';
     } else {
@@ -14,8 +12,7 @@ if($_POST['rodzaj']=="polisa") {
     }
 }
 else if($_POST['rodzaj']=="potwierdzenie") {
-
-    if (unlink('pliki/potwierdzenieplatnosci/ubezpieczenie/' . $car_ID . '_' . $ubezpieczenie_ID . '.pdf')) {
+    if (unlink('pliki/potwierdzeniaplatnosci/ubezpieczenie/' . $car_ID . '_' . $ubezpieczenie_ID . '.pdf')) {
         echo 'Operacja zakończona pomyślnie.<br />';
     } else {
         echo 'Błąd. Spróbuj ponownie później.<br />';

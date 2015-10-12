@@ -25,7 +25,7 @@ if (user::isLogged()) {
             <td>&nbsp;Rocznik&nbsp;</td>
             <td>&nbsp;Przebieg&nbsp;</td>
             <td>&nbsp;VIN&nbsp;</td>
-            <td colspan="5">&nbsp;Opcje&nbsp;</td>
+            <td colspan="6">&nbsp;Opcje&nbsp;</td>
         </tr>
     <?php
     // pobranie ID użytkownika
@@ -44,6 +44,7 @@ if (user::isLogged()) {
         $Serwis='<form method="post" action="samochodserwisuj.php"><input type="hidden" name="id" value='.$idek.' />&nbsp;<input type="submit" value="Serwis"/>&nbsp;</form>';
         $HistoriaTankowanie='<form method="post" action="samochodtankowaniehistoria.php"><input type="hidden" name="id" value='.$idek.' />&nbsp;<input type="submit" value="Historia tankowania"/>&nbsp;</form>';
         $HistoriaSerwis='<form method="post" action="samochodserwisowaniehistoria.php"><input type="hidden" name="id" value='.$idek.' />&nbsp;<input type="submit" value="Historia serwisowania"/>&nbsp;</form>';
+        $Ubezpieczenie='<form method="post" action="samochodubezpieczenie.php"><input type="hidden" name="id" value='.$idek.' />&nbsp;<input type="submit" value="Ubezpieczenie"/>&nbsp;</form>';
         ?>
         <tr>
             <td>&nbsp;<?php echo $NrRej; ?>&nbsp;</td>
@@ -67,6 +68,7 @@ if (user::isLogged()) {
             ?>
             <td>&nbsp;<?php echo $HistoriaTankowanie; ?>&nbsp;</td>
             <td>&nbsp;<?php echo $HistoriaSerwis; ?>&nbsp;</td>
+            <td>&nbsp;<?php echo $Ubezpieczenie; ?>&nbsp;</td>
         </tr>
     <?php
     }

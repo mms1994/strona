@@ -11,4 +11,3 @@ include("base.php");
 require_once ('user.class.php');
 include("names_pl.php");
 ?>
-

@@ -4,7 +4,7 @@ include('template/header.php');
 
 <?php
 $max_rozmiar = 1024*1024*10;
-if($_POST['rodzaj']+="polisa") {
+if($_POST['rodzaj']=="polisa") {
     $nazwa = $_POST['car_ID'] . '_' . $_POST['ubezpieczenie_ID'] . '.pdf';
     $car_ID = $_POST['car_ID'];
     $sc = dirname($_SERVER['REQUEST_URI']);

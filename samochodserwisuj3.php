@@ -13,8 +13,32 @@ $przebieg_koniec=htmlspecialchars(mysql_real_escape_string($_POST['przebieg_koni
 $koszt=htmlspecialchars(mysql_real_escape_string($_POST['koszt']));
 $zakres=htmlspecialchars(mysql_real_escape_string($_POST['zakres']));
 $zrob=true;
+$blad="";
 // tu dodać sprawdzanie czy dane wprowadzone prawidłowo
-
+if($data_start==""){
+    $blad.="Pole data oddania do serwisu nie może być puste!<br />";
+    $zrob=false;
+}
+if($data_koniec==""){
+    $blad.="Pole data odbioru z serwisu nie może być puste!<br />";
+    $zrob=false;
+}
+if($przebieg_start==""){
+    $blad.="Pole przebieg przy oddaniu do serwisu nie może być puste!<br />";
+    $zrob=false;
+}
+if($przebieg_koniec==""){
+    $blad.="Pole przebiegy przy odbiorze z serwisu nie może być puste!<br />";
+    $zrob=false;
+}
+if($koszt==""){
+    $blad.="Pole koszt nie może być puste!<br />";
+    $zrob=false;
+}
+if($zakres==""){
+    $blad.="Pole zakres napraw nie może być puste!<br />";
+    $zrob=false;
+}
 // jeśli wszystko dobrze wykonanie zapytań
 if($zrob) {
     $zapytanie = "INSERT INTO service VALUES ('', '$car_ID', '$data_start', '$przebieg_start', '$stacja_ID', '$data_koniec', '$przebieg_koniec', '$koszt', '$zakres')";

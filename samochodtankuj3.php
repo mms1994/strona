@@ -6,12 +6,12 @@ include('template/header.php');
 // wczytanie zmiennych z POSTa
 $car_ID=$_POST['car_ID'];
 $stacja_ID=$_POST['stacja_ID'];
-$cena=$_POST['cena'];
-$koszt=$_POST['koszt'];
-$ilosc=$_POST['ilosc'];
-$przebieg=$_POST['przebieg'];
-$dystans=$_POST['dystans'];
-$data=$_POST['data'];
+$cena=htmlspecialchars(mysql_real_escape_string($_POST['cena']));
+$koszt=htmlspecialchars(mysql_real_escape_string($_POST['koszt']));
+$ilosc=htmlspecialchars(mysql_real_escape_string($_POST['ilosc']));
+$przebieg=htmlspecialchars(mysql_real_escape_string($_POST['przebieg']));
+$dystans=htmlspecialchars(mysql_real_escape_string($_POST['dystans']));
+$data=htmlspecialchars(mysql_real_escape_string($_POST['data']));
 $zrob=true;
 $blad='';
 // sprawdzenie czy pola są odpowiednio uzupełnione, ewentualne uzupełnienie wybranych pól

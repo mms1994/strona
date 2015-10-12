@@ -4,12 +4,12 @@ include('template/header.php');
 
 <?php
 $wl=$_POST['wl'];
-$marka=$_POST['marka'];
-$model=$_POST['model'];
-$rocznik=$_POST['rocznik'];
-$przebieg=$_POST['przebieg'];
-$vin=$_POST['vin'];
-$nrrej=$_POST['nrrej'];
+$marka=htmlspecialchars(mysql_real_escape_string($_POST['marka']));
+$model=htmlspecialchars(mysql_real_escape_string($_POST['model']));
+$rocznik=htmlspecialchars(mysql_real_escape_string($_POST['rocznik']));
+$przebieg=htmlspecialchars(mysql_real_escape_string($_POST['przebieg']));
+$vin=htmlspecialchars(mysql_real_escape_string($_POST['vin']));
+$nrrej=htmlspecialchars(mysql_real_escape_string($_POST['nrrej']));
 
 $zapytanie = "INSERT INTO cars VALUES ('', '$marka', '$model', '$rocznik', '$przebieg', '$wl', '$vin', '$nrrej', '0')";
 $wynik = mysql_query($zapytanie);

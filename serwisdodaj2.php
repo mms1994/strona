@@ -5,10 +5,10 @@ include('template/header.php');
 <?php
 
 $car_ID=$_POST['id'];
-$nazwa=$_POST['nazwa'];
-$miejscowosc=$_POST['miejscowosc'];
-$ulica=$_POST['ulica'];
-$numer=$_POST['numer'];
+$nazwa=htmlspecialchars(mysql_real_escape_string($_POST['nazwa']));
+$miejscowosc=htmlspecialchars(mysql_real_escape_string($_POST['miejscowosc']));
+$ulica=htmlspecialchars(mysql_real_escape_string($_POST['ulica']));
+$numer=htmlspecialchars(mysql_real_escape_string($_POST['numer']));
 
 $zapytanie = "INSERT INTO serwis VALUES ('', '$nazwa', '$miejscowosc', '$ulica', '$numer')";
 $wynik = mysql_query($zapytanie);

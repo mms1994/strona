@@ -20,7 +20,7 @@ class user {
         if ($login == '') $login = $_COOKIE['login'];
         //if ($pass == '') $pass = $_COOKIE['pass'];
 
-        self::$user = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE login='$login' LIMIT 1;"));
+        self::$user = mysql_fetch_array(mysql_query("SELECT * FROM uzytkownicy WHERE login='$login' LIMIT 1;"));
         return self::$user;
     }
 
@@ -33,7 +33,7 @@ class user {
      * @return array
      */
     public function getDataById ($id) {
-        $user = mysql_fetch_array(mysql_query("SELECT * FROM users WHERE id='$id' LIMIT 1;"));
+        $user = mysql_fetch_array(mysql_query("SELECT * FROM uzytkownicy WHERE uzytkownik_id='$id' LIMIT 1;"));
         return $user;
     }
 

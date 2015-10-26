@@ -12,7 +12,7 @@ if (user::isLogged()) {
     echo '<p>Jesteś zalogowany, witaj '.$user['login'].'!</p>';
     echo 'Aby się <a href="logout.php">wylogować</a></p>';
     $log=$user['login'];
-    $ide = mysql_fetch_array(mysql_query("SELECT id FROM users WHERE login='$log' LIMIT 1;"));
+    $ide = mysql_fetch_array(mysql_query("SELECT uzytkownik_id FROM uzytkownicy WHERE login='$log' LIMIT 1;"));
     $id=$ide['id'];
     ?>
     <br /><hr><br />
@@ -29,7 +29,7 @@ if (user::isLogged()) {
         </tr>
     <?php
     // pobranie ID użytkownika
-    $zapytanie = mysql_query("SELECT * FROM cars WHERE wl='$id'");
+    $zapytanie = mysql_query("SELECT * FROM samochody WHERE wl='$id'");
     while ($row = mysql_fetch_array($zapytanie, MYSQL_ASSOC)) {
         $NrRej=$row['nrrej'];
         $Marka=$row['marka'];

@@ -15,7 +15,7 @@ $valid=true;
 if(!preg_match('[a-zA-Z]', $marka)) $valid=false;
 if(!preg_match('[a-zA-Z]', $model)) $valid=false;
 if($valid) {
-    $zapytanie = "INSERT INTO cars VALUES ('', '$marka', '$model', '$rocznik', '$przebieg', '$wl', '$vin', '$nrrej', '0')";
+    $zapytanie = "INSERT INTO samochody VALUES ('', '$marka', '$model', '$rocznik', '$przebieg', '$wl', '$vin', '$nrrej', '0')";
     $wynik = mysql_query($zapytanie);
 
     if ($wynik) {

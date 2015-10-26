@@ -19,7 +19,7 @@ if ($_POST['send'] == 1) {
     $pass = user::passSalter($pass); // Posól i zahashuj hasło
 
     // Sprawdź, czy użytkownik o podanym loginie i haśle isnieje w bazie danych
-    $userExists = mysql_fetch_array(mysql_query("SELECT COUNT(*) FROM users WHERE login = '$login' AND pass = '$pass'"));
+    $userExists = mysql_fetch_array(mysql_query("SELECT COUNT(*) FROM uzytkownicy WHERE login = '$login' AND pass = '$pass'"));
 
     if ($userExists[0] == 0) {
         // Użytkownik nie istnieje w bazie

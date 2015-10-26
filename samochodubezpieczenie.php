@@ -66,7 +66,7 @@ $car_ID=$_POST['id'];
         </tr>
 
         <?php
-        $zapytanie = mysql_query("SELECT * FROM assurance WHERE car_id='$car_ID'");
+        $zapytanie = mysql_query("SELECT * FROM ubezpieczenia WHERE car_id='$car_ID'");
         while ($row = mysql_fetch_array($zapytanie, MYSQL_ASSOC)) {
             $Data_start=$row['data_start'];
             $Data_koniec=$row['data_koniec'];
@@ -74,7 +74,7 @@ $car_ID=$_POST['id'];
             $Koszt=$row['koszt'];
             $Uwagi=$row['uwagi'];
             $Nr_polisy=$row['polisa'];
-            $ubezpieczenie_ID=$row['id'];
+            $ubezpieczenie_ID=$row['ubezpieczenie_id'];
             $pk="pliki/potwierdzeniaplatnosci/ubezpieczenie/".$car_ID."_".$ubezpieczenie_ID.".pdf";
             $pp="pliki/polisy/komunikacyjne/".$car_ID."_".$ubezpieczenie_ID.".pdf";
             ?>

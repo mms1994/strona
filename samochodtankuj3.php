@@ -17,12 +17,12 @@ $blad='';
 // sprawdzenie czy pola są odpowiednio uzupełnione, ewentualne uzupełnienie wybranych pól
 if($przebieg!='' || $dystans!='') {
     if($przebieg==''){
-        $zapytanie = mysql_query("SELECT * FROM cars WHERE id='$car_ID'");
+        $zapytanie = mysql_query("SELECT * FROM samochody WHERE car_id='$car_ID'");
         $row = mysql_fetch_array($zapytanie, MYSQL_ASSOC);
         $przebieg=$dystans+$row['przebieg'];
     }
     if($dystans==''){
-        $zapytanie = mysql_query("SELECT * FROM cars WHERE id='$car_ID'");
+        $zapytanie = mysql_query("SELECT * FROM samochody WHERE car_id='$car_ID'");
         $row = mysql_fetch_array($zapytanie, MYSQL_ASSOC);
         $dystans=$przebieg-$row['przebieg'];
     }
@@ -52,9 +52,9 @@ if($data=='') {
 }
 // jeśli wszystko dobrze wykonanie zapytań
 if($zrob) {
-    $zapytanie = "INSERT INTO fuel VALUES ('', '$car_ID', '$data', '$przebieg', '$stacja_ID', '$ilosc', '$koszt', '$dystans', '$cena')";
+    $zapytanie = "INSERT INTO tankowanie VALUES ('', '$car_ID', '$data', '$przebieg', '$stacja_ID', '$ilosc', '$koszt', '$dystans', '$cena')";
     $wynik = mysql_query($zapytanie);
-    $zapytanie2="UPDATE cars SET przebieg='$przebieg' WHERE id='$car_ID'";
+    $zapytanie2="UPDATE samochody SET przebieg='$przebieg' WHERE car_id='$car_ID'";
     $wynik2 = mysql_query($zapytanie2);
     if ($wynik&&$wynik2) {
         echo 'Wpis dodany prawidłowo<br />';

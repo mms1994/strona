@@ -20,7 +20,7 @@ $car_ID=$_POST['id'];
         </tr>
 
         <?php
-        $zapytanie = mysql_query("SELECT * FROM service WHERE car_id='$car_ID'");
+        $zapytanie = mysql_query("SELECT * FROM serwisowanie WHERE car_id='$car_ID'");
         while ($row = mysql_fetch_array($zapytanie, MYSQL_ASSOC)) {
             $Data_start=$row['data_start'];
             $Przebieg_start=$row['przebieg_koniec'];
@@ -29,14 +29,14 @@ $car_ID=$_POST['id'];
             $Koszt=$row['koszt'];
             $Serwis_id=$row['serwis_ID'];
             $Zakres=$row['zakres'];
-            $zapytanie2 = mysql_query("SELECT * FROM serwis WHERE id='$Serwis_id'");
+            $zapytanie2 = mysql_query("SELECT * FROM serwis WHERE serwis_id='$Serwis_id'");
             $row2 = mysql_fetch_array($zapytanie2, MYSQL_ASSOC);
             $nazwa=$row2['nazwa'];
             $miejscowosc=$row2['miejscowosc'];
             $ulica=$row2['ulica'];
             $numer=$row2['numer'];
             $Serwis=$nazwa.', '.$miejscowosc.', '.$ulica.' '.$numer;
-            $serwis_ID=$row['id'];
+            $serwis_ID=$row['serwis_id'];
             $pk="pliki/potwierdzeniaplatnosci/serwis/".$car_ID."_".$serwis_ID.".pdf";
             ?>
             <tr>

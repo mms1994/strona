@@ -6,7 +6,7 @@ include('template/header.php');
 
 $car_ID=$_POST['id'];
 
-$zapytanie="UPDATE cars SET status='1' WHERE id='$car_ID'";
+$zapytanie="UPDATE samochody SET status='1' WHERE car_id='$car_ID'";
 $wynik = mysql_query($zapytanie);
 
 if ($wynik) {

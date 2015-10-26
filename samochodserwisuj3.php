@@ -41,7 +41,7 @@ if($zakres==""){
 }
 // jeśli wszystko dobrze wykonanie zapytań
 if($zrob) {
-    $zapytanie = "INSERT INTO service VALUES ('', '$car_ID', '$data_start', '$przebieg_start', '$stacja_ID', '$data_koniec', '$przebieg_koniec', '$koszt', '$zakres')";
+    $zapytanie = "INSERT INTO serwisowanie VALUES ('', '$car_ID', '$data_start', '$przebieg_start', '$stacja_ID', '$data_koniec', '$przebieg_koniec', '$koszt', '$zakres')";
     $wynik = mysql_query($zapytanie);
     if ($wynik) {
         echo 'Wpis dodany prawidłowo<br />';

@@ -11,7 +11,7 @@ $koszt=htmlspecialchars(mysql_real_escape_string($_POST['koszt']));
 $uwagi=htmlspecialchars(mysql_real_escape_string($_POST['uwagi']));
 $polisa=htmlspecialchars(mysql_real_escape_string($_POST['nr_polisy']));
 
-$zapytanie = "INSERT INTO assurance VALUES ('', '$car_ID', '$rodzaj', '$data_start', '$data_koniec', '$koszt', '$uwagi', '$polisa')";
+$zapytanie = "INSERT INTO ubezpieczenia VALUES ('', '$car_ID', '$rodzaj', '$data_start', '$data_koniec', '$koszt', '$uwagi', '$polisa')";
 $wynik = mysql_query($zapytanie);
 
 if ($wynik) {

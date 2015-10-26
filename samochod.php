@@ -13,7 +13,7 @@ if (user::isLogged()) {
     echo 'Aby się <a href="logout.php">wylogować</a></p>';
     $log=$user['login'];
     $ide = mysql_fetch_array(mysql_query("SELECT uzytkownik_id FROM uzytkownicy WHERE login='$log' LIMIT 1;"));
-    $id=$ide['id'];
+    $id=$ide['uzytkownik_id'];
     ?>
     <br /><hr><br />
     Lista Twoich samochodów:<form method="post" action="samochoddodaj.php"><input type="hidden" name="id" value='<?php echo $id; ?>' />&nbsp;<input type="submit" value="Dodaj pojazd"/>&nbsp;</form><br />

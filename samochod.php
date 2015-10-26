@@ -37,7 +37,7 @@ if (user::isLogged()) {
         $Rocznik=$row['rocznik'];
         $Przebieg=$row['przebieg'];
         $VIN=$row['vin'];
-        $idek=$row['id'];
+        $idek=$row['car_id'];
         $status=$row['status'];
         $Usun='<form method="post" action="samochodusun.php" onsubmit="return confirm(\'Czy na pewno chcesz skasować?\');"><input type="hidden" name="id" value='.$idek.' />&nbsp;<input type="submit" value="Zamknij"/>&nbsp;</form>';
         $Tankowanie='<form method="post" action="samochodtankuj.php"><input type="hidden" name="id" value='.$idek.' />&nbsp;<input type="submit" value="Tankowanie"/>&nbsp;</form>';

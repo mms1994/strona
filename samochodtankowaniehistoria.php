@@ -5,7 +5,6 @@ include('template/header.php');
 <?php
 
 $car_ID=$_POST['id'];
-
 ?>
 <table border="1">
         <tr>

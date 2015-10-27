@@ -12,8 +12,14 @@ $vin=htmlspecialchars(mysql_real_escape_string($_POST['vin']));
 $nrrej=htmlspecialchars(mysql_real_escape_string($_POST['nrrej']));
 
 $valid=true;
-if(!preg_match('[a-zA-Z]', $marka)) $valid=false;
-if(!preg_match('[a-zA-Z]', $model)) $valid=false;
+if(!preg_match('[a-zA-Z_]', $marka)) $valid=false;
+if(!preg_match('[a-zA-Z_]', $model)) $valid=false;
+if(!preg_match('/^[1-2][0-9]{3}$/D', $rocznik)) $valid=false;
+if(!preg_match('/^[1-9][0-9]$/D', $przebieg)) $valid=false;
+//if(!preg_match('', $vin)) $valid=false;
+if(strlen($vin)!=17) $valid=false;
+if(!preg_match('/^[BCDEFGKLNOPRSTWZ][AZ]{1,2}[A-Z0-9]{4,5}$/D', $nrrej)) $valid=false;
+if(strlen($nrrej)!=7) $valid=false;
 if($valid) {
     $zapytanie = "INSERT INTO samochody VALUES ('', '$marka', '$model', '$rocznik', '$przebieg', '$wl', '$vin', '$nrrej', '0')";
     $wynik = mysql_query($zapytanie);

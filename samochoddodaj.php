@@ -4,7 +4,7 @@ include('template/header.php');
 
 <?php
 $id=$_POST['id'];
-echo ('Uzupełnij dane:<br />');
+echo ('Uzupełnij dane:(zamiast spacji użyj podkreślników "_")<br />');
 echo ('<form method="post" action="samochoddodaj2.php" name="formularz" id="formularz">
 <input type="hidden" name="wl" value="'.$id.'" />
 <b>Marka</b>:<br /><input type="text" name="marka" placeholder="Wpisz markę" required /><br />

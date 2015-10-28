@@ -44,7 +44,7 @@ if(!preg_match('/^[2][0-9][0-9][0-9]-[0-1][0-9]-[0-3][0-9]$/D', $data_koniec)) {
 if(!preg_match('/^[1-9][0-9]{0,19}$/D', $przebieg_start)) {$zrob=false; $blad.="Zły format przebiegu przy oddaniu";}
 if(!preg_match('/^[1-9][0-9]{0,19}$/D', $przebieg_koniec)) {$zrob=false; $blad.="Zły format przebiegu przy odebraniu";}
 if(!preg_match('/^[0-9]+\.[0-9]{1,2}$/D', $koszt)) {$zrob=false; $blad.="Zły format kosztu";}
-if(!preg_match('/^[a-zA-Z0-9\.\-,!?\@_]+$/D', $zakres)) {$zrob=false; $blad.="Zły format zakresu";}
+if(!preg_match('/^[a-zA-Z0-9\.\-,!?\@_\(\)]+$/D', $zakres)) {$zrob=false; $blad.="Zły format zakresu";}
 // jeśli wszystko dobrze wykonanie zapytań
 if($zrob) {
     $zapytanie = "INSERT INTO serwisowanie VALUES ('', '$car_ID', '$data_start', '$przebieg_start', '$stacja_ID', '$data_koniec', '$przebieg_koniec', '$koszt', '$zakres')";

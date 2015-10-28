@@ -36,7 +36,7 @@ $car_ID=$_POST['id'];
             $ulica=$row2['ulica'];
             $numer=$row2['numer'];
             $Serwis=$nazwa.', '.$miejscowosc.', '.$ulica.' '.$numer;
-            $serwis_ID=$row['serwis_id'];
+            $serwis_ID=$row['serwis_ID'];
             $pk="pliki/potwierdzeniaplatnosci/serwis/".$car_ID."_".$serwis_ID.".pdf";
             ?>
             <tr>

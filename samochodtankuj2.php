@@ -56,9 +56,9 @@ include('template/header.php');
 
 $car_ID=$_POST['car_ID'];
 $stacja_ID=$_POST['stacja_ID'];
-$zapytanie = mysqli_query($mysqli, "SELECT * FROM stacja WHERE id='$stacja_ID'");
+$zapytanie = mysqli_query($mysqli, "SELECT * FROM stacja WHERE stacja_id='$stacja_ID'");
 $row = mysqli_fetch_array($zapytanie, MYSQLI_ASSOC);
-    $id=$row['id'];
+    $id=$row['stacja_id'];
     $nazwa=$row['nazwa'];
     $numer=$row['numer'];
     $ulica=$row['ulica'];

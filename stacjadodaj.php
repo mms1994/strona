@@ -4,7 +4,7 @@ include('template/header.php');
 
 <?php
 
-$car_ID=$_POST['id'];
+$car_ID=$_POST['car_ID'];
 echo ('<form method="post" action="stacjadodaj2.php" name="formularz" id="formularz" >
 <input type="hidden" name="car_ID" value='.$car_ID.' />
 <b>Nazwa stacji</b>:<br /><input type="text" name="nazwa" id="nazwa" placeholder="Wpisz nazwę stacji" required /><br />

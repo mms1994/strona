@@ -40,19 +40,19 @@ include('template/header.php');
 /**
  * Sprawdź czy formularz został wysłany
  */
-if ($_POST['send'] == 1) {
+if (isset($_POST['send']) == 1) {
     // Zabezpiecz dane z formularza przed kodem HTML i ewentualnymi atakami SQL Injection
-    $login = mysql_real_escape_string(htmlspecialchars($_POST['login']));
-    $pass = mysql_real_escape_string(htmlspecialchars($_POST['pass']));
-    $pass_v = mysql_real_escape_string(htmlspecialchars($_POST['pass_v']));
-    $email = mysql_real_escape_string(htmlspecialchars($_POST['email']));
-    $email_v = mysql_real_escape_string(htmlspecialchars($_POST['email_v']));
+    $login = mysqli_real_escape_string($mysqli, (htmlspecialchars($_POST['login'])));
+    $pass = mysqli_real_escape_string($mysqli, (htmlspecialchars($_POST['pass'])));
+    $pass_v = mysqli_real_escape_string($mysqli, (htmlspecialchars($_POST['pass_v'])));
+    $email = mysqli_real_escape_string($mysqli, (htmlspecialchars($_POST['email'])));
+    $email_v = mysqli_real_escape_string($mysqli, (htmlspecialchars($_POST['email_v'])));
 
     /**
      * Sprawdź czy podany przez użytkownika email lub login już istnieje
      */
-    $existsLogin = mysql_fetch_array(mysql_query("SELECT COUNT(*) FROM uzytkownicy WHERE login='$login' LIMIT 1"));
-    $existsEmail = mysql_fetch_array(mysql_query("SELECT COUNT(*) FROM uzytkownicy WHERE email='$email' LIMIT 1"));
+    $existsLogin = mysqli_fetch_array(mysqli_query($mysqli, "SELECT COUNT(*) FROM uzytkownicy WHERE login='$login' LIMIT 1"));
+    $existsEmail = mysqli_fetch_array(mysqli_query($mysqli, "SELECT COUNT(*) FROM uzytkownicy WHERE email='$email' LIMIT 1"));
 
     $errors = ''; // Zmienna przechowująca listę błędów które wystąpiły
 
@@ -80,7 +80,7 @@ if ($_POST['send'] == 1) {
         // Posól i zasahuj hasło
         $pass = user::passSalter($pass);
         // Zapisz dane do bazy
-        mysql_query("INSERT INTO uzytkownicy (login, email, pass) VALUES('$login','$email','$pass');") or die ('<p class="error">Wystąpił błąd w zapytaniu i nie udało się zarejestrować użytkownika.</p>');
+        mysqli_query($mysqli, "INSERT INTO uzytkownicy (login, email, pass) VALUES('$login','$email','$pass');") or die ('<p class="error">Wystąpił błąd w zapytaniu i nie udało się zarejestrować użytkownika.</p>');
 
         echo '<p class="success">'.$login.', zostałeś zarejestrowany.
         <br /><a href="login.php">Logowanie</a></p>';

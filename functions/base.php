@@ -12,16 +12,13 @@ $cfg['db_name'] = 'strona'; // Nazwa bazy danych
 
 
 // POŁĄCZ Z BAZĄ DANYCH
-$conn = @mysql_connect ($cfg['db_server'], $cfg['db_user'], $cfg['db_pass']);
-$select = @mysql_select_db ($cfg['db_name'], $conn);
+$mysqli = new mysqli($cfg['db_server'], $cfg['db_user'], $cfg['db_pass'], $cfg['db_name']);
 
-if (!$conn) {
-    die ('<p class="error">Nie udało się połączyc z bazą danych.</p>');
+if (mysqli_connect_errno()) {
+    printf("<p class='error'>Nie udało się połączyc z bazą danych: %s\n</p>", mysqli_connect_error());
+    exit();
 }
 
-if (!$select) {
-    die ('<p class="error">Nie udało się wybrać bazy danych.</p>');
-}
-$as=mysql_query("SET CHARSET utf8");
-$es=mysql_query("SET NAMES `utf8` COLLATE `utf8_polish_ci`");
+$as=$mysqli->query("SET CHARSET utf8");
+$es=$mysqli->query("SET NAMES `utf8` COLLATE `utf8_polish_ci`");
 ?>

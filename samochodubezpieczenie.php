@@ -37,8 +37,8 @@ include('template/header.php');
     </script>
 <?php
 $car_ID=$_POST['id'];
-$zapytanie = mysql_query("SELECT status FROM samochody WHERE car_id='$car_ID'");
-$row = mysql_fetch_array($zapytanie, MYSQL_ASSOC);
+$zapytanie = mysqli_query($mysqli, "SELECT status FROM samochody WHERE car_id='$car_ID'");
+$row = mysqli_fetch_array($zapytanie, MYSQLI_ASSOC);
 $status=$row['status'];
 if($status==0) {
 ?>
@@ -74,8 +74,8 @@ if($status==0) {
         </tr>
 
         <?php
-        $zapytanie = mysql_query("SELECT * FROM ubezpieczenia WHERE car_id='$car_ID'");
-        while ($row = mysql_fetch_array($zapytanie, MYSQL_ASSOC)) {
+        $zapytanie = mysqli_query($mysqli, "SELECT * FROM ubezpieczenia WHERE car_id='$car_ID'");
+        while ($row = mysqli_fetch_array($zapytanie, MYSQLI_ASSOC)) {
             $Data_start=$row['data_start'];
             $Data_koniec=$row['data_koniec'];
             $Rodzaj=$row['rodzaj'];

@@ -19,8 +19,8 @@ $car_ID=$_POST['id'];
         </tr>
 
     <?php
-    $zapytanie = mysql_query("SELECT * FROM tankowanie WHERE car_id='$car_ID'");
-    while ($row = mysql_fetch_array($zapytanie, MYSQL_ASSOC)) {
+    $zapytanie = mysqli_query($mysqli, "SELECT * FROM tankowanie WHERE car_id='$car_ID'");
+    while ($row = mysqli_fetch_array($zapytanie, MYSQLI_ASSOC)) {
         $Data=$row['data'];
         $Przebieg=$row['przebieg'];
         $Ilosc=$row['ilosc'];
@@ -28,8 +28,8 @@ $car_ID=$_POST['id'];
         $Dystans=$row['dystans'];
         $Cena=$row['cena'];
         $Stacja_id=$row['stacja_id'];
-        $zapytanie2 = mysql_query("SELECT * FROM stacja WHERE stacja_id='$Stacja_id'");
-        $row2 = mysql_fetch_array($zapytanie2, MYSQL_ASSOC);
+        $zapytanie2 = mysqli_query($mysqli, "SELECT * FROM stacja WHERE stacja_id='$Stacja_id'");
+        $row2 = mysqli_fetch_array($zapytanie2, MYSQLI_ASSOC);
         $nazwa=$row2['nazwa'];
         $miejscowosc=$row2['miejscowosc'];
         $ulica=$row2['ulica'];

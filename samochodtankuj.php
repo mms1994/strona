@@ -6,8 +6,8 @@ include('template/header.php');
 
 $car_ID=$_POST['id'];
 $selecty='';
-$zapytanie = mysql_query("SELECT * FROM stacja");
-while ($row = mysql_fetch_array($zapytanie, MYSQL_ASSOC)) {
+$zapytanie = mysqli_query($mysqli, "SELECT * FROM stacja");
+while ($row = mysqli_fetch_array($zapytanie, MYSQLI_ASSOC)) {
     $id=$row['id'];
     $nazwa=$row['nazwa'];
     $numer=$row['numer'];

@@ -3,15 +3,15 @@ include('template/header.php');
 ?>
 <?php
 //*****************************************************
-// skasować wykrzynik żeby logownaie było dostępny tylko przez https - nie dostepne dla połączenia nie szyfrowanego
-if(!((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+if(((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
     || $_SERVER['SERVER_PORT'] == 443)){
 //*****************************************************
 // Zabezpiecz zmienne odebrane z formularza, przed atakami SQL Injection
-    $login = htmlspecialchars(mysql_real_escape_string($_POST['login']));
-    $pass = htmlspecialchars(mysql_real_escape_string($_POST['pass']));
 
-    if ($_POST['send'] == 1) {
+
+    if (isset($_POST['send']) == 1) {
+        $login = htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['login']));
+        $pass = htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['pass']));
         // Sprawdź, czy wszystkie pola zostały uzupełnione
         if (!$login or empty($login)) {
             die ('<p class="error">Wypełnij pole z loginem!</p>');
@@ -24,7 +24,7 @@ if(!((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
         $pass = user::passSalter($pass); // Posól i zahashuj hasło
 
         // Sprawdź, czy użytkownik o podanym loginie i haśle isnieje w bazie danych
-        $userExists = mysql_fetch_array(mysql_query("SELECT COUNT(*) FROM uzytkownicy WHERE login = '$login' AND pass = '$pass'"));
+        $userExists = mysqli_fetch_array(mysqli_query($mysqli, "SELECT COUNT(*) FROM uzytkownicy WHERE login = '$login' AND pass = '$pass'"));
 
         if ($userExists[0] == 0) {
             // Użytkownik nie istnieje w bazie

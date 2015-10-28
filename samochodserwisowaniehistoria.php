@@ -20,8 +20,8 @@ $car_ID=$_POST['id'];
         </tr>
 
         <?php
-        $zapytanie = mysql_query("SELECT * FROM serwisowanie WHERE car_id='$car_ID'");
-        while ($row = mysql_fetch_array($zapytanie, MYSQL_ASSOC)) {
+        $zapytanie = mysqli_query($mysqli, "SELECT * FROM serwisowanie WHERE car_id='$car_ID'");
+        while ($row = mysqli_fetch_array($zapytanie, MYSQLI_ASSOC)) {
             $Data_start=$row['data_start'];
             $Przebieg_start=$row['przebieg_koniec'];
             $Data_koniec=$row['data_start'];
@@ -29,8 +29,8 @@ $car_ID=$_POST['id'];
             $Koszt=$row['koszt'];
             $Serwis_id=$row['serwis_ID'];
             $Zakres=$row['zakres'];
-            $zapytanie2 = mysql_query("SELECT * FROM serwis WHERE serwis_id='$Serwis_id'");
-            $row2 = mysql_fetch_array($zapytanie2, MYSQL_ASSOC);
+            $zapytanie2 = mysqli_query($mysqli, "SELECT * FROM serwis WHERE serwis_id='$Serwis_id'");
+            $row2 = mysqli_fetch_array($zapytanie2, MYSQLI_ASSOC);
             $nazwa=$row2['nazwa'];
             $miejscowosc=$row2['miejscowosc'];
             $ulica=$row2['ulica'];

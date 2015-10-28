@@ -5,7 +5,9 @@
  * @package User System
  */
 
+
 class user {
+
 
     public static $user = array();
 
@@ -19,8 +21,21 @@ class user {
     public static function getData ($login, $pass) {
         if ($login == '') $login = $_COOKIE['login'];
         //if ($pass == '') $pass = $_COOKIE['pass'];
+        $cfg['db_server'] = 'localhost'; // Serwer bazy danych
+        $cfg['db_user'] = 'root'; // Nazwa użytkownika
+        $cfg['db_pass'] = ''; // Hasło
+        $cfg['db_name'] = 'strona'; // Nazwa bazy danych
+        $mysqli = new mysqli($cfg['db_server'], $cfg['db_user'], $cfg['db_pass'], $cfg['db_name']);
 
-        self::$user = mysql_fetch_array(mysql_query("SELECT * FROM uzytkownicy WHERE login='$login' LIMIT 1;"));
+        if (mysqli_connect_errno()) {
+            printf("<p class='error'>Nie udało się połączyc z bazą danych: %s\n</p>", mysqli_connect_error());
+            exit();
+        }
+
+        $as=$mysqli->query("SET CHARSET utf8");
+        $es=$mysqli->query("SET NAMES `utf8` COLLATE `utf8_polish_ci`");
+
+        self::$user = mysqli_fetch_array(mysqli_query($mysqli, "SELECT * FROM uzytkownicy WHERE login='$login' LIMIT 1;"));
         return self::$user;
     }
 
@@ -33,7 +48,20 @@ class user {
      * @return array
      */
     public function getDataById ($id) {
-        $user = mysql_fetch_array(mysql_query("SELECT * FROM uzytkownicy WHERE uzytkownik_id='$id' LIMIT 1;"));
+        $cfg['db_server'] = 'localhost'; // Serwer bazy danych
+        $cfg['db_user'] = 'root'; // Nazwa użytkownika
+        $cfg['db_pass'] = ''; // Hasło
+        $cfg['db_name'] = 'strona'; // Nazwa bazy danych
+        $mysqli = new mysqli($cfg['db_server'], $cfg['db_user'], $cfg['db_pass'], $cfg['db_name']);
+
+        if (mysqli_connect_errno()) {
+            printf("<p class='error'>Nie udało się połączyc z bazą danych: %s\n</p>", mysqli_connect_error());
+            exit();
+        }
+
+        $as=$mysqli->query("SET CHARSET utf8");
+        $es=$mysqli->query("SET NAMES `utf8` COLLATE `utf8_polish_ci`");
+        $user = mysqli_fetch_array(mysqli_query($mysqli, "SELECT * FROM uzytkownicy WHERE uzytkownik_id='$id' LIMIT 1;"));
         return $user;
     }
 

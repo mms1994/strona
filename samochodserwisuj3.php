@@ -6,12 +6,12 @@ include('template/header.php');
 // wczytanie zmiennych z POSTa
 $car_ID=$_POST['car_ID'];
 $stacja_ID=$_POST['stacja_ID'];
-$data_start=htmlspecialchars(mysql_real_escape_string($_POST['data_start']));
-$data_koniec=htmlspecialchars(mysql_real_escape_string($_POST['data_koniec']));
-$przebieg_start=htmlspecialchars(mysql_real_escape_string($_POST['przebieg_start']));
-$przebieg_koniec=htmlspecialchars(mysql_real_escape_string($_POST['przebieg_koniec']));
-$koszt=htmlspecialchars(mysql_real_escape_string($_POST['koszt']));
-$zakres=htmlspecialchars(mysql_real_escape_string($_POST['zakres']));
+$data_start=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['data_start']));
+$data_koniec=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['data_koniec']));
+$przebieg_start=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['przebieg_start']));
+$przebieg_koniec=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['przebieg_koniec']));
+$koszt=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['koszt']));
+$zakres=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['zakres']));
 $zrob=true;
 $blad="";
 // tu dodać sprawdzanie czy dane wprowadzone prawidłowo
@@ -48,7 +48,7 @@ if(!preg_match('/^[a-zA-Z0-9\.\-,!?\@_\(\)]+$/D', $zakres)) {$zrob=false; $blad.
 // jeśli wszystko dobrze wykonanie zapytań
 if($zrob) {
     $zapytanie = "INSERT INTO serwisowanie VALUES ('', '$car_ID', '$data_start', '$przebieg_start', '$stacja_ID', '$data_koniec', '$przebieg_koniec', '$koszt', '$zakres')";
-    $wynik = mysql_query($zapytanie);
+    $wynik = mysqli_query($mysqli, $zapytanie);
     if ($wynik) {
         echo 'Wpis dodany prawidłowo<br />';
         echo '<a href="samochod.php">POWRÓT</a><br />';

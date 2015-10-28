@@ -7,7 +7,7 @@ include('template/header.php');
 $car_ID=$_POST['id'];
 
 $zapytanie="UPDATE samochody SET status='1' WHERE car_id='$car_ID'";
-$wynik = mysql_query($zapytanie);
+$wynik = mysqli_query($mysqli, $zapytanie);
 
 if ($wynik) {
     echo 'Usunięcie dokonane prawidłowo.<br />';

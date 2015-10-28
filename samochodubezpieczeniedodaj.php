@@ -4,12 +4,12 @@ include('template/header.php');
 
 <?php
 $car_ID=$_POST['car_ID'];
-$rodzaj=htmlspecialchars(mysql_real_escape_string($_POST['rodzaj']));
-$data_start=htmlspecialchars(mysql_real_escape_string($_POST['data_start']));
-$data_koniec=htmlspecialchars(mysql_real_escape_string($_POST['data_koniec']));
-$koszt=htmlspecialchars(mysql_real_escape_string($_POST['koszt']));
-$uwagi=htmlspecialchars(mysql_real_escape_string($_POST['uwagi']));
-$polisa=htmlspecialchars(mysql_real_escape_string($_POST['nr_polisy']));
+$rodzaj=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['rodzaj']));
+$data_start=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['data_start']));
+$data_koniec=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['data_koniec']));
+$koszt=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['koszt']));
+$uwagi=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['uwagi']));
+$polisa=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['nr_polisy']));
 $zrob=true;
 $blad="";
 if(!preg_match('/^[2][0-9][0-9][0-9]-([0][0-9]|[1][0-2])-[0-3][0-9]$/D', $data_start)) {$zrob=false; $blad.="Zły format daty początku";}
@@ -18,10 +18,10 @@ if(!preg_match('/^[0-9]+\.[0-9]{1,2}$/D', $koszt)) {$zrob=false; $blad.="Zły fo
 if(!preg_match('/^[a-zA-Z0-9\.\-,!?\@_\(\)]+$/D', $polisa)) {$zrob=false; $blad.="Zły format nr polisy";}
 if(!preg_match('/^[a-zA-Z0-9\.\-,!?\@_\(\)]+$/D', $uwagi)) {$zrob=false; $blad.="Zły format uwag";}
 
-if($zrób) {
+if($zrob) {
 
     $zapytanie = "INSERT INTO ubezpieczenia VALUES ('', '$car_ID', '$rodzaj', '$data_start', '$data_koniec', '$koszt', '$uwagi', '$polisa')";
-    $wynik = mysql_query($zapytanie);
+    $wynik = mysqli_query($mysqli, $zapytanie);
 
     if ($wynik) {
         echo 'Wpis dodany prawidłowo<br />';

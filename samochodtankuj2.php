@@ -71,15 +71,15 @@ echo ('<form method="post" action="samochodtankuj3.php" name="formularz" id="for
 <input type="hidden" name="car_ID" value='.$car_ID.' />
 <input type="hidden" name="stacja_ID" value='.$stacja_ID.' />
 <b>Data tankowania</b>:<br /><input type="date" name="data" id="data" required placeholder="YYYY-MM-DD" pattern="^((?:20)\d\d)[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$" /><br />
-<b>Przebieg na koniec</b> (lub dystans):<br /><input type="number" name="przebieg" id="przebieg" onblur="przebiegCheck()" placeholder="Wpisz przebieg" /><br />
+<b>Przebieg na koniec</b> (lub dystans):<br /><input type="number" name="przebieg" id="przebieg" onblur="przebiegCheck()" pattern="[1-9][0-9]{0,18}" placeholder="Wpisz przebieg" /><br />
 <div id="bladprzebieg" class="blad"></div>
-<b>Dystans</b> (lub przebieg):<br /><input type="number" name="dystans" onblur="dystansCheck()" placeholder="Wpisz przebyty dystans" /><br />
+<b>Dystans</b> (lub przebieg):<br /><input type="text" name="dystans" onblur="dystansCheck()" pattern="[0-9]{1,4}\.[0-9]{1,2}" placeholder="Wpisz przebyty dystans" /><br />
 <div id="bladdystans" class="blad"></div>
-<b>Cena za litr</b>:<br /><input type="number" name="cena" onblur="cenaCheck()" placeholder="Wpisz cenę za litr" /><br />
+<b>Cena za litr</b>:<br /><input type="text" name="cena" onblur="cenaCheck()" pattern="[0-9]{1,4}\.[0-9]{1,2}" placeholder="Wpisz cenę za litr" /><br />
 <div id="bladcena" class="blad"></div>
-<b>Koszt</b>:<br /><input type="number" name="koszt" onblur="kosztCheck()" placeholder="Wpisz koszt tankowania" /><br />
+<b>Koszt</b>:<br /><input type="text" name="koszt" onblur="kosztCheck()" pattern="[0-9]{1,7}\.[0-9]{1,2}" placeholder="Wpisz koszt tankowania" /><br />
 <div id="bladkoszt" class="blad"></div>
-<b>Ilosc</b>:<br /><input type="number" name="ilosc" onblur="iloscCheck()" placeholder="Wpisz ilość zatankowanego paliwa" /><br />
+<b>Ilosc</b>:<br /><input type="text" name="ilosc" onblur="iloscCheck()" pattern="[0-9]{1,5}\.[0-9]{1,2}" placeholder="Wpisz ilość zatankowanego paliwa" /><br />
 <div id="bladilosc" class="blad"></div>
 &nbsp;<input type="submit" value="Dalej"/>&nbsp;</form>');
 ?>

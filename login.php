@@ -4,7 +4,8 @@ include('template/header.php');
 <?php
 //*****************************************************
 // skasować wykrzynik żeby logownaie było dostępny tylko przez https - nie dostepne dla połączenia nie szyfrowanego
-if(!$_SERVER['HTTPS']) {
+if(!((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+    || $_SERVER['SERVER_PORT'] == 443)){
 //*****************************************************
 // Zabezpiecz zmienne odebrane z formularza, przed atakami SQL Injection
     $login = htmlspecialchars(mysql_real_escape_string($_POST['login']));

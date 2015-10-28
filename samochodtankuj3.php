@@ -14,6 +14,12 @@ $dystans=htmlspecialchars(mysql_real_escape_string($_POST['dystans']));
 $data=htmlspecialchars(mysql_real_escape_string($_POST['data']));
 $zrob=true;
 $blad='';
+if(!preg_match('/^[0-9]+\.[0-9]{1,2}$/D', $cena)) {$zrob=false; $blad.="Zły format ceny za litr";}
+if(!preg_match('/^[0-9]+\.[0-9]{1,2}$/D', $koszt)) {$zrob=false; $blad.="Zły format kosztu";}
+if(!preg_match('/^[0-9]+\.[0-9]{1,2}$/D', $ilosc)) {$zrob=false; $blad.="Zły format ilości";}
+if(!preg_match('/^[1-9][0-9]{0,19}$/D', $przebieg)) {$zrob=false; $blad.="Zły format przebiegu";}
+if(!preg_match('/^[0-9]{0,19}$/D', $dystans)) {$zrob=false; $blad.="Zły format dystansu";}
+if(!preg_match('/^[2][0-9][0-9][0-9]-([0][0-9]|[1][0-2])-[0-3][0-9]$/D', $data)) {$zrob=false; $blad.="Zły format daty";}
 // sprawdzenie czy pola są odpowiednio uzupełnione, ewentualne uzupełnienie wybranych pól
 if($przebieg!='' || $dystans!='') {
     if($przebieg==''){

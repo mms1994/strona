@@ -9,7 +9,13 @@ $nazwa=htmlspecialchars(mysql_real_escape_string($_POST['nazwa']));
 $miejscowosc=htmlspecialchars(mysql_real_escape_string($_POST['miejscowosc']));
 $ulica=htmlspecialchars(mysql_real_escape_string($_POST['ulica']));
 $numer=htmlspecialchars(mysql_real_escape_string($_POST['numer']));
-
+$zrob=true;
+$blad='';
+if(!preg_match('[a-zA-Z_]', $nazwa)) $valid=false;
+if(!preg_match('[a-zA-Z_0-9\.]', $ulica)) $valid=false;
+if(!preg_match('[a-zA-Z_]', $miejscowosc)) $valid=false;
+if(!preg_match('[a-zA-Z_0-9]', $numer)) $valid=false;
+if($zrob) {
 $zapytanie = "INSERT INTO stacja VALUES ('', '$nazwa', '$miejscowosc', '$ulica', '$numer')";
 $wynik = mysql_query($zapytanie);
 
@@ -19,7 +25,11 @@ if ($wynik) {
 } else {
     echo 'Błąd spróbuj ponownie później<a href="samochod.php">POWRÓT</a><br />';
 }
-
+}
+else {
+    echo "Błąd: ".$blad;
+    echo '<a href="samochod.php">POWRÓT</a><br />';
+}
 ?>
 
 <?php

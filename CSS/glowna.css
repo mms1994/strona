@@ -1,6 +1,6 @@
 body
 {
-    background: #E9E9E9;
+    background: #FFFFF0;
     margin: 0 auto 0 auto;
     width: 1200px;
 }
@@ -41,7 +41,7 @@ ol a:hover {
     width:100%;
     margin: 10px 0 0 0 ;
     padding: 10px 0;
-    background-color: #9CAB9E;
+    background-color: #E5E4E2;
     text-align:center; }
 #footer p {
     display: block;

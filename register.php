@@ -63,6 +63,7 @@ if ($_POST['send'] == 1) {
     if ($existsEmail[0] >= 1) $errors .= '- Ten e-mail jest już używany<br />';
     if ($email != $email_v) $errors .= '- E-maile się nie zgadzają<br />';
     if ($pass != $pass_v)  $errors .= '- Hasła się nie zgadzają<br />';
+    if (!preg_match("/^[a-zA-Z0-9\.\-_]+\@[a-zA-Z0-9\.\-_]+\.[a-z]{2,4}$/D", $email)) $errors.='-Email podany w niewłaściwym formacie<br />';
 
     /**
      * Jeśli wystąpiły jakieś błędy, to je pokaż
@@ -98,7 +99,7 @@ if ($_POST['send'] == 1) {
         <input maxlength="32" type="password" name="pass_v" id="pass_again" required onblur="checkPass()" />
         <div id="passDiv"></div>
         <label for="email">Email:</label>
-        <input type="text" name="email" maxlength="50" id="email" required onblur="checkMail()" />
+        <input type="text" name="email" maxlength="50" id="email" pattern="[a-zA-Z0-9\.\-_]+\@[a-zA-Z0-9\.\-_]+\.[a-z]{2,4}" required onblur="checkMail()" />
 
         <label for="email_again">Email (ponownie):</label>
         <input type="text" maxlength="255" name="email_v" id="email_again" required onblur="checkMail()" /><br />

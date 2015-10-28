@@ -37,6 +37,10 @@ include('template/header.php');
     </script>
 <?php
 $car_ID=$_POST['id'];
+$zapytanie = mysql_query("SELECT status FROM samochody WHERE car_id='$car_ID'");
+$row = mysql_fetch_array($zapytanie, MYSQL_ASSOC);
+$status=$row['status'];
+if($status==0) {
 ?>
     <form method="post" name="formularz" action="samochodubezpieczeniedodaj.php"><input type="hidden" name="car_ID" value="<?php echo $car_ID; ?>"/>
         <b>DODAJ NOWE UBEZPIECZENIE</b><br />
@@ -53,6 +57,10 @@ $car_ID=$_POST['id'];
         <div id="bladuwagi" class="blad"></div>
         <input type="submit" value="Dodaj"/> </form>
 <br /><br />
+    <?php }
+    else {
+        echo "Samochód sprzedany, nie możesz już dodawać nowych ubezpieczeń, możesz tylko przeglądać już istniejące.<br /><br />";
+    }?>
     <table border="1">
         <tr>
             <td>&nbsp;Rodzaj&nbsp;</td>

@@ -3,7 +3,8 @@ include('template/header.php');
 ?>
 <?php
 //*****************************************************
-if(((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+//skasować "!"
+if(!((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
     || $_SERVER['SERVER_PORT'] == 443)){
 //*****************************************************
 // Zabezpiecz zmienne odebrane z formularza, przed atakami SQL Injection

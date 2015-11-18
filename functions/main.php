@@ -10,6 +10,10 @@ date_default_timezone_set("Europe/Warsaw");
 include("base.php");
 require_once ('user.class.php');
 include("names_pl.php");
+//////////////////////////////////////////////////////////////
+/* TUTAJ MA BYĆ ID ADMINA */
+$admin_id=2;
+//////////////////////////////////////////////////////////////
 function validate_vin($vin) {
 
     $vin = strtolower($vin);

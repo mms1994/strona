@@ -8,7 +8,7 @@ if (user::isLogged()) {
     $log=$ide['login'];
     if ($user['login']==$log) {
         ?>
-        <li><a class="menu" href="admin.php">admin</a></li>
+        <li><a class="menu" href="admin.php">Panel admina</a></li>
         <?php
     }
 }

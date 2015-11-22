@@ -22,6 +22,7 @@ if (user::isLogged()) {
         <?php
         //lista samochodów
         ?>
+        </div>
         <div id="samochody_pokaz" style="display: ;" >
             <button onclick="div_show('samochody'), div_hide('samochody_pokaz')">POKAŻ SAMOCHODY</button>
         </div>
@@ -30,6 +31,7 @@ if (user::isLogged()) {
         <?php
         //lista stacji
         ?>
+        </div>
         <div id="stacje_pokaz" style="display: ;" >
             <button onclick="div_show('stacje'), div_hide('stacje_pokaz')">POKAŻ STACJE</button>
         </div>
@@ -38,6 +40,7 @@ if (user::isLogged()) {
         <?php
         //lista serwisów
         ?>
+        </div>
         <div id="serwisy_pokaz" style="display: ;" >
             <button onclick="div_show('serwisy'), div_hide('serwisy_pokaz')">POKAŻ SERWISY</button>
         </div>
@@ -46,14 +49,16 @@ if (user::isLogged()) {
         <?php
         //lista tankowań
         ?>
-        <div id="serwisowania_pokaz" style="display: ;" >
-            <button onclick="div_show('serwisowania'), div_hide('serwisowania_pokaz')">POKAŻ SERWISOWANIA</button>
         </div>
-        <div id="serwisowania" style="display: none;">
-        <button onclick="div_hide('serwisowania'), div_show('serwisowania_pokaz')">UKRYJ SERWISOWANIA</button>
+        <div id="tankowania_pokaz" style="display: ;" >
+            <button onclick="div_show('tankowania'), div_hide('tankowania_pokaz')">POKAŻ TANKOWANIA</button>
+        </div>
+        <div id="tankowania" style="display: none;">
+        <button onclick="div_hide('tankowania'), div_show('tankowania_pokaz')">UKRYJ TANKOWANIA</button>
         <?php
         //lista serwisowań
         ?>
+        </div>
         <div id="serwisowania_pokaz" style="display: ;" >
             <button onclick="div_show('serwisowania'), div_hide('serwisowania_pokaz')">POKAŻ SERWISOWANIA</button>
         </div>

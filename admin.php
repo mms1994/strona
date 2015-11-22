@@ -11,41 +11,94 @@ if (user::isLogged()) {
     $ide = mysqli_fetch_array(mysqli_query($mysqli, "SELECT login FROM uzytkownicy WHERE uzytkownik_id='$admin_id' LIMIT 1;"));
     $log=$ide['login'];
     if ($user['login']==$log) {
-        ?><center><?php
-        //lista pracowników
-        ?>
+        ?><center>
         <div id="pracownicy_pokaz" style="display: ;" >
             <button onclick="div_show('pracownicy'), div_hide('pracownicy_pokaz')">POKAŻ PRACOWNIKÓW</button>
         </div>
         <div id="pracownicy" style="display: none;">
         <button onclick="div_hide('pracownicy'), div_show('pracownicy_pokaz')">UKRYJ PRACOWNIKÓW</button>
-        <?php
-        //lista samochodów
-        ?>
+
         </div>
         <div id="samochody_pokaz" style="display: ;" >
             <button onclick="div_show('samochody'), div_hide('samochody_pokaz')">POKAŻ SAMOCHODY</button>
         </div>
         <div id="samochody" style="display: none;">
         <button onclick="div_hide('samochody'), div_show('samochody_pokaz')">UKRYJ SAMOCHODY</button>
-        <?php
-        //lista stacji
-        ?>
+            <table border="1">
+                <tr>
+                    <td>&nbsp;NR REJESTRACYJNY&nbsp;</td>
+                    <td>&nbsp;Marka&nbsp;</td>
+                    <td>&nbsp;Model&nbsp;</td>
+                    <td>&nbsp;Rocznik&nbsp;</td>
+                    <td>&nbsp;Przebieg&nbsp;</td>
+                    <td>&nbsp;VIN&nbsp;</td>
+                    <td>&nbsp;Id właściciela&nbsp;</td>
+                    <td colspan="7">&nbsp;Opcje&nbsp;</td>
+                </tr>
+                <?php
+                $zapytanie = mysqli_query($mysqli, "SELECT * FROM samochody");
+                while ($row = mysqli_fetch_array($zapytanie, MYSQLI_ASSOC)) {
+                    $NrRej=$row['nrrej'];
+                    $Marka=$row['marka'];
+                    $Model=$row['model'];
+                    $Rocznik=$row['rocznik'];
+                    $Przebieg=$row['przebieg'];
+                    $VIN=$row['vin'];
+                    $idek=$row['car_id'];
+                    $status=$row['status'];
+                    $wl=$row['wl'];
+                    $Usun='<form method="post" action="samochodusun.php" onsubmit="return confirm(\'Czy na pewno chcesz skasować?\');"><input type="hidden" name="id" value='.$idek.' />&nbsp;<input type="submit" value="Zamknij"/>&nbsp;</form>';
+                    $Tankowanie='<form method="post" action="samochodtankuj.php"><input type="hidden" name="id" value='.$idek.' />&nbsp;<input type="submit" value="Tankowanie"/>&nbsp;</form>';
+                    $Serwis='<form method="post" action="samochodserwisuj.php"><input type="hidden" name="id" value='.$idek.' />&nbsp;<input type="submit" value="Serwis"/>&nbsp;</form>';
+                    $HistoriaTankowanie='<form method="post" action="samochodtankowaniehistoria.php"><input type="hidden" name="id" value='.$idek.' />&nbsp;<input type="submit" value="Historia tankowania"/>&nbsp;</form>';
+                    $HistoriaSerwis='<form method="post" action="samochodserwisowaniehistoria.php"><input type="hidden" name="id" value='.$idek.' />&nbsp;<input type="submit" value="Historia serwisowania"/>&nbsp;</form>';
+                    $Ubezpieczenie='<form method="post" action="samochodubezpieczenie.php"><input type="hidden" name="id" value='.$idek.' />&nbsp;<input type="submit" value="Ubezpieczenie"/>&nbsp;</form>';
+                    $Wiecej='<form method="post" action="samochodwiecej.php"><input type="hidden" name="id" value='.$idek.' />&nbsp;<input type="submit" value="Więcej informacji"/>&nbsp;</form>';
+                    ?>
+                    <tr>
+                        <td>&nbsp;<?php echo $NrRej; ?>&nbsp;</td>
+                        <td>&nbsp;<?php echo $Marka; ?>&nbsp;</td>
+                        <td>&nbsp;<?php echo $Model; ?>&nbsp;</td>
+                        <td>&nbsp;<?php echo $Rocznik; ?>&nbsp;</td>
+                        <td>&nbsp;<?php echo $Przebieg; ?>&nbsp;</td>
+                        <td>&nbsp;<?php echo $VIN; ?>&nbsp;</td>
+                        <td>&nbsp;<?php echo $wl; ?>&nbsp;</td>
+                        <?php if($status==0) {
+                            ?>
+                            <td>&nbsp;<?php echo $Usun; ?>&nbsp;</td>
+                            <td>&nbsp;<?php echo $Tankowanie; ?>&nbsp;</td>
+                            <td>&nbsp;<?php echo $Serwis; ?>&nbsp;</td>
+                            <?php
+                        }
+                        else  {
+                            ?>
+                            <td colspan="3"> &nbsp; POJAZD SPRZEDANY &nbsp;</td>
+                            <?php
+                        }
+                        ?>
+                        <td>&nbsp;<?php echo $HistoriaTankowanie; ?>&nbsp;</td>
+                        <td>&nbsp;<?php echo $HistoriaSerwis; ?>&nbsp;</td>
+                        <td>&nbsp;<?php echo $Ubezpieczenie; ?>&nbsp;</td>
+                        <td>&nbsp;<?php echo $Wiecej; ?>&nbsp;</td>
+                    </tr>
+                    <?php
+                }
+                ?>
+            </table>
         </div>
         <div id="stacje_pokaz" style="display: ;" >
             <button onclick="div_show('stacje'), div_hide('stacje_pokaz')">POKAŻ STACJE</button>
         </div>
         <div id="stacje" style="display: none;">
         <button onclick="div_hide('stacje'), div_show('stacje_pokaz')">UKRYJ STACJE</button>
-        <?php
-        //lista serwisów
-        ?>
+
         </div>
         <div id="serwisy_pokaz" style="display: ;" >
             <button onclick="div_show('serwisy'), div_hide('serwisy_pokaz')">POKAŻ SERWISY</button>
         </div>
         <div id="serwisy" style="display: none;">
         <button onclick="div_hide('serwisy'), div_show('serwisy_pokaz')">UKRYJ SERWISY</button>
+
         </div>
         <div id="tankowania_pokaz" style="display: ;" >
             <button onclick="div_show('tankowania'), div_hide('tankowania_pokaz')">POKAŻ TANKOWANIA</button>

@@ -17,7 +17,23 @@ if (user::isLogged()) {
         </div>
         <div id="pracownicy" style="display: none;">
         <button onclick="div_hide('pracownicy'), div_show('pracownicy_pokaz')">UKRYJ PRACOWNIKÓW</button>
-
+            <table border="1">
+                <tr>
+                    <td>&nbsp;Imię&nbsp;</td>
+                    <td>&nbsp;Nazwisko&nbsp;</td>
+                    <td>&nbsp;Email&nbsp;</td>
+                    <td>&nbsp;Pesel&nbsp;</td>
+                    <td>&nbsp;Ulica&nbsp;</td>
+                    <td>&nbsp;Numer domu&nbsp;</td>
+                    <td>&nbsp;Numer mieszkania&nbsp;</td>
+                    <td>&nbsp;Miejscowość&nbsp;</td>
+                    <td>&nbsp;Kod pocztowy&nbsp;</td>
+                    <td>&nbsp;Nazwa stanowiska&nbsp;</td>
+                </tr>
+                <?php
+                //kod wyświetlający pracowników
+                ?>
+            </table>
         </div>
         <div id="samochody_pokaz" style="display: ;" >
             <button onclick="div_show('samochody'), div_hide('samochody_pokaz')">POKAŻ SAMOCHODY</button>
@@ -311,6 +327,7 @@ if (user::isLogged()) {
         </div>
         <?php
     }
+    echo 'Nie masz uprawnień';
 }
 
 else {

@@ -31,7 +31,7 @@ if (user::isLogged()) {
                     <td>&nbsp;Nazwa stanowiska&nbsp;</td>
                 </tr>
                 <?php
-                //kod wyświetlający pracowników
+
                 ?>
             </table>
         </div>
@@ -327,7 +327,9 @@ if (user::isLogged()) {
         </div>
         <?php
     }
-    echo 'Nie masz uprawnień';
+    else {
+        echo 'Nie masz uprawnień';
+    }
 }
 
 else {

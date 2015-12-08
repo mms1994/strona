@@ -9,7 +9,6 @@ if(!((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
 //*****************************************************
 // Zabezpiecz zmienne odebrane z formularza, przed atakami SQL Injection
 
-
     if (isset($_POST['send']) == 1) {
         $login = htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['login']));
         $pass = htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['pass']));
@@ -33,12 +32,34 @@ if(!((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
         } else {
             // Użytkownik istnieje
             $user = user::getData($login, $pass); // Pobierz dane użytknika do tablicy i zapisz ją do zmiennej $user
-
+            $ide = mysqli_fetch_array(mysqli_query($mysqli, "SELECT uzytkownik_id FROM uzytkownicy WHERE login='$login'"));
+            $userId=$ide['uzytkownik_id'];
             // Przypisz pobrane dane do sesji
-            setcookie("login", $login, time() + 3600 * 4);
-            //setcookie("pass", $pass);
+            $session=array();
+            $session["ip"]=$_SERVER['REMOTE_ADDR'];
+            $sessionData=md5($session["ip"]);
+            $date=new DateTime();
+            $session["key"]=md5($date->getTimestamp().$sessionData.rand());
+            $session["userId"]=$userId;
+            $session["dateTime"]=$date->format("Y-m-d H:i:s");
+            $session["userAgent"]=$_SERVER['HTTP_USER_AGENT'];
+            $key=$session["key"];
+            $dateTime=$session["dateTime"];
+            $userAgent=$session["userAgent"];
+            $ip=$session["ip"];
+            $to=$mysqli->query("SELECT id_user FROM sesja WHERE id_user='$userId'");
+            if($to->num_rows>0)
+                $to=$mysqli->query("DELETE FROM sesja WHERE id_user='$userId'");
+            $zap="INSERT INTO sesja (id_user, session_key, date, user_ip, user_agent) VALUE ('$userId', '$key', '$dateTime', '$ip', '$userAgent')";
+            $wynik = $mysqli->query($zap);
+            if($wynik) {
+                setcookie("login", $login, time() + 3600*4);
+                $cookieData=array($session["key"], $userId);
+                setcookie("sesja", implode(";", $cookieData), time()+3600*4);
+                header("Location: index.php");
+                echo '<p class="success">Zostałeś zalogowany. Możesz przejść na <a href="index.php">stronę główną</a></p>';
+            }
 
-            echo '<p class="success">Zostałeś zalogowany. Możesz przejść na <a href="index.php">stronę główną</a></p>';
         }
     } else {
         /**

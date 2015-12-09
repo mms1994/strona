@@ -21,7 +21,6 @@ if (user::isLogged()) {
                 <tr>
                     <td>&nbsp;Imię&nbsp;</td>
                     <td>&nbsp;Nazwisko&nbsp;</td>
-                    <td>&nbsp;Email&nbsp;</td>
                     <td>&nbsp;Pesel&nbsp;</td>
                     <td>&nbsp;Ulica&nbsp;</td>
                     <td>&nbsp;Numer domu&nbsp;</td>
@@ -31,7 +30,37 @@ if (user::isLogged()) {
                     <td>&nbsp;Nazwa stanowiska&nbsp;</td>
                 </tr>
                 <?php
-
+                    $zapytanie = mysqli_query($mysqli, "SELECT * FROM pracownicy");
+                    while ($row = mysqli_fetch_array($zapytanie, MYSQLI_ASSOC)) {
+                        $imie=$row['imie'];
+                        $nazwisko=$row['nazwisko'];
+                        $pesel=$row['pesel'];
+                        $ulica=$row['ulica'];
+                        $nr_dom=$row['nr_dom'];
+                        $nr_mieszkania=$row['nr_mieszkania'];
+                        if($nr_mieszkania==0) {
+                            $nr_mieszkania='-';
+                        }
+                        $miejscowosc=$row['miejscowosc'];
+                        $kod_pocztowy=$row['kod_pocztowy'];
+                        $kod_stanowiska=$row['stand_id'];
+                        $zapytanie2=mysqli_query($mysqli, "SELECT * FROM stanowiska WHERE stanowisko_id='$kod_stanowiska'");
+                        $row2=mysqli_fetch_array($zapytanie2, MYSQLI_ASSOC);
+                        $kod_stanowiska=$row2['nazwa'];
+                        ?>
+                        <tr>
+                            <td>&nbsp; <?php echo $imie; ?> &nbsp;</td>
+                            <td>&nbsp; <?php echo $nazwisko; ?> &nbsp;</td>
+                            <td>&nbsp; <?php echo $pesel; ?> &nbsp;</td>
+                            <td>&nbsp; <?php echo $ulica; ?> &nbsp;</td>
+                            <td>&nbsp; <?php echo $nr_dom; ?> &nbsp;</td>
+                            <td>&nbsp; <?php echo $nr_mieszkania; ?> &nbsp;</td>
+                            <td>&nbsp; <?php echo $miejscowosc; ?> &nbsp;</td>
+                            <td>&nbsp; <?php echo $kod_pocztowy; ?> &nbsp;</td>
+                            <td>&nbsp; <?php echo $kod_stanowiska ?> &nbsp;</td>
+                        </tr>
+                        <?php
+                    }
                 ?>
             </table>
         </div>

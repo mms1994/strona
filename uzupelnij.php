@@ -22,14 +22,15 @@ if (user::isLogged()) {
     $ide = mysqli_fetch_array(mysqli_query($mysqli, "SELECT uzytkownik_id FROM uzytkownicy WHERE login='$nick' LIMIT 1;"));
     $id=$ide['uzytkownik_id'];
     if($valid) {
-        $zapytanie = "INSERT INTO pracownicy VALUES ('', '$imie', '$nazwisko', '$id', '$pesel', '$ulica', '$nr_dom', '$nr_mieszkania', '$miejscowosc', '$kod_pocztowy', '')";
-        $wynik = mysqli_query($mysqli, $zapytanie);
-
+        $zapytanie = "INSERT INTO pracownicy VALUES ('', '$imie', '$nazwisko', '$id', '$pesel', '$ulica', '$nr_dom', '$nr_mieszkania', '$miejscowosc', '$kod_pocztowy', 1)";
+        $wynik = $mysqli->query($zapytanie);
         if ($wynik) {
             echo 'Wpis dodany prawidłowo<br />';
             echo '<a href="index.php">POWRÓT</a><br />';
         }
-        echo 'Błąd spróbuj ponownie później <a href="index.php">POWRÓT</a><br />';
+        else {
+            echo 'Błąd spróbuj ponownie później <a href="index.php">POWRÓT</a><br />';
+        }
     }
 else {
     echo "Formularz został błędnie wypełniony!<br />";

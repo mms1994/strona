@@ -5,9 +5,9 @@ include('template/header.php');
     function checkLogin(){
         var login = document.getElementById("login").value;
         var errorResult = document.getElementById("loginDiv");
+        errorResult.innerHTML = '';
         if(login=='')
             errorResult.innerHTML = 'Błąd: Nie podano <b>Loginu</b>';
-        errorResult.innerHTML = '';
         var myAjax = new Ajax.Request('functions/register.php', {
             method: 'post',
             parameters: "login=" + login,

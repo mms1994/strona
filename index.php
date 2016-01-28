@@ -27,12 +27,12 @@ if (user::isLogged()) {
             <input type="hidden" name="nick" value="<?php echo $user['login'] ?>" />
             Imię: <input type="text" name="imie" required/><br />
             Nazwisko: <input type="text" name="nazwisko" required/><br />
-            Pesel: <input type="text" name="pesel" required/><br />
+            Pesel: <input type="text" name="pesel" maxlength="11" required/><br />
             Ulica: <input type="ulica" name="ulica" required/><br />
             Numer domu: <input type="number" name="nr_dom" required/><br />
             Numer mieszkania: <input type="number" name="nr_mieszkania" /><br />
             Miejscowość: <input type="text" name="miejscowosc" required/><br />
-            Kod pocztowy: <input type="text" name="kod_pocztowy" required/><br />
+            Kod pocztowy: <input type="text" name="kod_pocztowy" maxlength="5" required/><br />
             <input type="submit" value="Wyślij" />
         </form>
         <?php

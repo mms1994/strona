@@ -169,7 +169,33 @@ if (user::isLogged()) {
         </div>
         <div id="serwisy" style="display: none;">
         <button onclick="div_hide('serwisy'), div_show('serwisy_pokaz')">UKRYJ SERWISY</button>
+            <table border="1">
+                <tr>
+                    <td>&nbsp;Nazwa&nbsp;</td>
+                    <td>&nbsp;Miejscowość&nbsp;</td>
+                    <td>&nbsp;Ulica&nbsp;</td>
+                    <td>&nbsp;Numer&nbsp;</td>
+                </tr>
 
+                <?php
+                $zapytanie=mysqli_query($mysqli, "SELECT * FROM serwis");
+                while ($row = mysqli_fetch_array($zapytanie, MYSQLI_ASSOC)) {
+                    $nazwa=$row['nazwa'];
+                    $miejscowosc=$row['miejscowosc'];
+                    $ulica=$row['ulica'];
+                    $numer=$row['numer'];
+                    ?>
+                    <tr>
+                        <td>&nbsp;<?php echo $nazwa; ?>&nbsp;</td>
+                        <td>&nbsp;<?php echo $miejscowosc; ?>&nbsp;</td>
+                        <td>&nbsp;<?php echo $ulica; ?>&nbsp;</td>
+                        <td>&nbsp;<?php echo $numer; ?>&nbsp;</td>
+                    </tr>
+                    <?php
+                }
+                ?>
+
+            </table>
         </div>
         <div id="tankowania_pokaz" style="display: ;" >
             <button onclick="div_show('tankowania'), div_hide('tankowania_pokaz')">POKAŻ TANKOWANIA</button>

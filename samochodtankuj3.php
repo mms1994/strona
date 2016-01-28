@@ -6,12 +6,12 @@ include('template/header.php');
 // wczytanie zmiennych z POSTa
 $car_ID=$_POST['car_ID'];
 $stacja_ID=$_POST['stacja_ID'];
-$cena=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['cena']));
-$koszt=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['koszt']));
-$ilosc=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['ilosc']));
-$przebieg=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['przebieg']));
-$dystans=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['dystans']));
-$data=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['data']));
+$cena=strip_tags(stripslashes(htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['cena']))));
+$koszt=strip_tags(stripslashes(htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['koszt']))));
+$ilosc=strip_tags(stripslashes(htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['ilosc']))));
+$przebieg=strip_tags(stripslashes(htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['przebieg']))));
+$dystans=strip_tags(stripslashes(htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['dystans']))));
+$data=strip_tags(stripslashes(htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['data']))));
 $zrob=true;
 $blad='';
 if(!preg_match('/^[0-9]+\.[0-9]{1,2}$/D', $cena)) {$zrob=false; $blad.="Zły format ceny za litr";}

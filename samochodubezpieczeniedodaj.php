@@ -4,12 +4,12 @@ include('template/header.php');
 
 <?php
 $car_ID=$_POST['car_ID'];
-$rodzaj=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['rodzaj']));
-$data_start=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['data_start']));
-$data_koniec=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['data_koniec']));
-$koszt=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['koszt']));
-$uwagi=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['uwagi']));
-$polisa=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['nr_polisy']));
+$rodzaj=strip_tags(stripslashes(htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['rodzaj']))));
+$data_start=strip_tags(stripslashes(htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['data_start']))));
+$data_koniec=strip_tags(stripslashes(htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['data_koniec']))));
+$koszt=strip_tags(stripslashes(htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['koszt']))));
+$uwagi=strip_tags(stripslashes(htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['uwagi']))));
+$polisa=strip_tags(stripslashes(htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['nr_polisy']))));
 $zrob=true;
 $blad="";
 if(!preg_match('/^[2][0-9][0-9][0-9]-([0][0-9]|[1][0-2])-[0-3][0-9]$/D', $data_start)) {$zrob=false; $blad.="Zły format daty początku";}

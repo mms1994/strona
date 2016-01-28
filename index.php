@@ -15,10 +15,11 @@ if (user::isLogged()) {
     <br /><hr><br />
     <?php
     $dane=false;
+    $log=$user['login'];
     $ide = mysqli_fetch_array(mysqli_query($mysqli, "SELECT uzytkownik_id FROM uzytkownicy WHERE login='$log' LIMIT 1;"));
     $id=$ide['uzytkownik_id'];
     $ide2=mysqli_fetch_array(mysqli_query($mysqli, "SELECT imie FROM pracownicy WHERE id_user='$id'"));
-    if($ide2['imie']!=null) $dane=true;
+    if($ide2['imie']!="") $dane=true;
     if(!$dane) {
         ?>
         Musisz uzupełnić poniższe dane!<br />

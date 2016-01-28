@@ -5,10 +5,10 @@ include('template/header.php');
 <?php
 
 $car_ID=$_POST['id'];
-$nazwa=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['nazwa']));
-$miejscowosc=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['miejscowosc']));
-$ulica=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['ulica']));
-$numer=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['numer']));
+$nazwa=strip_tags(stripslashes(htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['nazwa']))));
+$miejscowosc=strip_tags(stripslashes(htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['miejscowosc']))));
+$ulica=strip_tags(stripslashes(htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['ulica']))));
+$numer=strip_tags(stripslashes(htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['numer']))));
 $zrob=true;
 $blad='';
 if(!preg_match('[a-zA-Z_]', $nazwa)) $valid=false;

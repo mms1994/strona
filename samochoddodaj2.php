@@ -6,12 +6,12 @@ include('template/header.php');
 
 
 $wl=$_POST['wl'];
-$marka=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['marka']));
-$model=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['model']));
-$rocznik=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['rocznik']));
-$przebieg=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['przebieg']));
-$vin=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['vin']));
-$nrrej=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['nrrej']));
+$marka=strip_tags(stripslashes(htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['marka']))));
+$model=strip_tags(stripslashes(htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['model']))));
+$rocznik=strip_tags(stripslashes(htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['rocznik']))));
+$przebieg=strip_tags(stripslashes(htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['przebieg']))));
+$vin=strip_tags(stripslashes(htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['vin']))));
+$nrrej=strip_tags(stripslashes(htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['nrrej']))));
 
 $valid=true;
 if(!preg_match('/^[A-Z][a-zA-Z_]{1,}$/D', $marka)) {

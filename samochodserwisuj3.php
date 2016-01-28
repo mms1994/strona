@@ -6,12 +6,12 @@ include('template/header.php');
 // wczytanie zmiennych z POSTa
 $car_ID=$_POST['car_ID'];
 $stacja_ID=$_POST['stacja_ID'];
-$data_start=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['data_start']));
-$data_koniec=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['data_koniec']));
-$przebieg_start=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['przebieg_start']));
-$przebieg_koniec=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['przebieg_koniec']));
-$koszt=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['koszt']));
-$zakres=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['zakres']));
+$data_start=strip_tags(stripslashes(htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['data_start']))));
+$data_koniec=strip_tags(stripslashes(htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['data_koniec']))));
+$przebieg_start=strip_tags(stripslashes(htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['przebieg_start']))));
+$przebieg_koniec=strip_tags(stripslashes(htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['przebieg_koniec']))));
+$koszt=strip_tags(stripslashes(htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['koszt']))));
+$zakres=strip_tags(stripslashes(htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['zakres']))));
 $zrob=true;
 $blad="";
 // tu dodać sprawdzanie czy dane wprowadzone prawidłowo

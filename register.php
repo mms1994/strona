@@ -42,11 +42,11 @@ include('template/header.php');
  */
 if (isset($_POST['send']) == 1) {
     // Zabezpiecz dane z formularza przed kodem HTML i ewentualnymi atakami SQL Injection
-    $login = mysqli_real_escape_string($mysqli, (htmlspecialchars($_POST['login'])));
-    $pass = mysqli_real_escape_string($mysqli, (htmlspecialchars($_POST['pass'])));
-    $pass_v = mysqli_real_escape_string($mysqli, (htmlspecialchars($_POST['pass_v'])));
-    $email = mysqli_real_escape_string($mysqli, (htmlspecialchars($_POST['email'])));
-    $email_v = mysqli_real_escape_string($mysqli, (htmlspecialchars($_POST['email_v'])));
+    $login = mysqli_real_escape_string($mysqli, (strip_tags(stripslashes(htmlspecialchars($_POST['login'])))));
+    $pass = mysqli_real_escape_string($mysqli, (strip_tags(stripslashes(htmlspecialchars($_POST['pass'])))));
+    $pass_v = mysqli_real_escape_string($mysqli, (strip_tags(stripslashes(htmlspecialchars($_POST['pass_v'])))));
+    $email = mysqli_real_escape_string($mysqli, (strip_tags(stripslashes(htmlspecialchars($_POST['email'])))));
+    $email_v = mysqli_real_escape_string($mysqli, (strip_tags(stripslashes(htmlspecialchars($_POST['email_v'])))));
 
     /**
      * Sprawdź czy podany przez użytkownika email lub login już istnieje

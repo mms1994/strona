@@ -10,8 +10,8 @@ if(!((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
 // Zabezpiecz zmienne odebrane z formularza, przed atakami SQL Injection
 
     if (isset($_POST['send']) == 1) {
-        $login = htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['login']));
-        $pass = htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['pass']));
+        $login = strip_tags(stripslashes(htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['login']))));
+        $pass = strip_tags(stripslashes(htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['pass']))));
         // Sprawdź, czy wszystkie pola zostały uzupełnione
         if (!$login or empty($login)) {
             die ('<p class="error">Wypełnij pole z loginem!</p>');

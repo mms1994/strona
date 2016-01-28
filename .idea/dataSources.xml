@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="1623700272">
-    <data-source source="LOCAL" name="SQLite -" uuid="e2b1a5bd-d3f9-4e5b-8289-93c4aa936cc7">
-      <driver-ref>sqlite.xerial</driver-ref>
+  <component name="DataSourceManagerImpl" format="xml" hash="342328043">
+    <data-source source="LOCAL" name="MySQL - strona@localhost" read-only="true" uuid="5b0b316b-1095-4d27-b3fd-0a7aa4cad69f">
+      <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/functions/baza.sqlite3</jdbc-url>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/strona</jdbc-url>
+      <driver-properties>
+        <property name="zeroDateTimeBehavior" value="convertToNull" />
+        <property name="tinyInt1isBit" value="false" />
+        <property name="characterEncoding" value="utf8" />
+        <property name="characterSetResults" value="utf8" />
+        <property name="yearIsDateType" value="false" />
+      </driver-properties>
     </data-source>
   </component>
 </project>

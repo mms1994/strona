@@ -14,14 +14,30 @@ $vin=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['vin']));
 $nrrej=htmlspecialchars(mysqli_real_escape_string($mysqli, $_POST['nrrej']));
 
 $valid=true;
-if(!preg_match('[a-zA-Z_]', $marka)) $valid=false;
-if(!preg_match('[a-zA-Z_]', $model)) $valid=false;
-if(!preg_match('/^[1-2][0-9]{3}$/D', $rocznik)) $valid=false;
-if(!preg_match('/^[1-9][0-9]$/D', $przebieg)) $valid=false;
-if(!validate_vin($vin)) $valid=false;
-if(strlen($vin)!=17) $valid=false;
-if(!preg_match('/^[BCDEFGKLNOPRSTWZ][A-Z]{1,2}[A-Z0-9]{4,5}$/D', $nrrej)) $valid=false;
-if(strlen($nrrej)!=7) $valid=false;
+if(!preg_match('/^[A-Z][a-zA-Z_]{1,}$/D', $marka)) {
+    $valid=false;
+}
+if(!preg_match('/^[A-Z][a-zA-Z_]{1,}$/D', $model)) {
+    $valid=false;
+}
+if(!preg_match('/^[1-2][0-9]{3}$/D', $rocznik)) {
+    $valid=false;
+}
+if(!preg_match('/^[1-9][0-9]{0,}$/D', $przebieg)) {
+    $valid=false;
+}
+if(!validate_vin($vin)) {
+    //$valid=false;
+}
+if(strlen($vin)!=17) {
+    $valid=false;
+}
+if(!preg_match('/^[BCDEFGKLNOPRSTWZ][A-Z]{1,2}[A-Z0-9]{4,5}$/D', $nrrej)) {
+    $valid=false;
+}
+if(strlen($nrrej)!=7) {
+    $valid=false;
+}
 if($valid) {
     $zapytanie = "INSERT INTO samochody VALUES ('', '$marka', '$model', '$rocznik', '$przebieg', '$wl', '$vin', '$nrrej', '0')";
     $wynik = mysqli_query($mysqli, $zapytanie);

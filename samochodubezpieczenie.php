@@ -51,7 +51,7 @@ if($status==0) {
         <div id="bladpolisa" class="blad"></div>
         <b>Początek okresu ubezpieczenia</b>:<br /><input type="date" name="data_start" id="data_start" required placeholder="YYYY-MM-DD" pattern="^((?:20)\d\d)[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$" /><br />
         <b>Koniec okresu ubezpieczenia</b>:<br /><input type="date" name="data_koniec" id="data_koniec" required placeholder="YYYY-MM-DD" pattern="^((?:20)\d\d)[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$" /><br />
-        <b>Koszt ubepiczenia</b>:<br /><input type="number" name="koszt" onblur="kosztCheck()" placeholder="Wpisz koszt ubezpieczenia" required /><br />
+        <b>Koszt ubepiczenia</b>:<br /><input type="text" name="koszt" pattern="[0-9]{1,7}\.[0-9]{1,2}" onblur="kosztCheck()" placeholder="Wpisz koszt ubezpieczenia" required /><br />
         <div id="bladkoszt" class="blad"></div>
         <b>Uwagi</b>:(wielkość pola możesz sobie zmieniać w zależności od potrzeb)<br /><textarea name="uwagi" onblur="uwagiCheck()" placeholder="Wpisz dodatkowe uwagi lub informacje" required ></textarea><br />
         <div id="bladuwagi" class="blad"></div>

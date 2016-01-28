@@ -73,7 +73,7 @@ echo ('<form method="post" action="samochodtankuj3.php" name="formularz" id="for
 <b>Data tankowania</b>:<br /><input type="date" name="data" id="data" required placeholder="YYYY-MM-DD" pattern="^((?:20)\d\d)[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$" /><br />
 <b>Przebieg na koniec</b> (lub dystans):<br /><input type="number" name="przebieg" id="przebieg" onblur="przebiegCheck()" pattern="[1-9][0-9]{0,18}" placeholder="Wpisz przebieg" /><br />
 <div id="bladprzebieg" class="blad"></div>
-<b>Dystans</b> (lub przebieg):<br /><input type="text" name="dystans" onblur="dystansCheck()" pattern="[0-9]{1,4}\.[0-9]{1,2}" placeholder="Wpisz przebyty dystans" /><br />
+<b>Dystans</b> (lub przebieg):<br /><input type="text" name="dystans" onblur="dystansCheck()" pattern="[0-9]{1,4}" placeholder="Wpisz przebyty dystans" /><br />
 <div id="bladdystans" class="blad"></div>
 <b>Cena za litr</b>:<br /><input type="text" name="cena" onblur="cenaCheck()" pattern="[0-9]{1,4}\.[0-9]{1,2}" placeholder="Wpisz cenę za litr" /><br />
 <div id="bladcena" class="blad"></div>

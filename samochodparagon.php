@@ -4,7 +4,7 @@ include('template/header.php');
 
 <?php
 $max_rozmiar = 1024*1024*10;
-if($_POST['tankowanie_ID']!="") {
+if(isset($_POST['tankowanie_ID'])AND $_POST['tankowanie_ID']!="") {
     $nazwa = $_POST['car_ID'] . '_' . $_POST['tankowanie_ID'] . '.pdf';
     $car_ID = $_POST['car_ID'];
     $sc = dirname($_SERVER['REQUEST_URI']);
@@ -24,7 +24,7 @@ if($_POST['tankowanie_ID']!="") {
         echo 'Błąd przy przesyłaniu danych!';
     }
 }
-if($_POST['serwis_ID']!="") {
+if(isset($_POST['serwis_ID'])AND $_POST['serwis_ID']!="") {
     $nazwa = $_POST['car_ID'] . '_' . $_POST['serwis_ID'] . '.pdf';
     $car_ID = $_POST['car_ID'];
     $sc = dirname($_SERVER['REQUEST_URI']);

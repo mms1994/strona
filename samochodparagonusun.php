@@ -4,7 +4,7 @@ include('template/header.php');
 
 <?php
 $car_ID=$_POST['car_ID'];
-if($_POST['tankowanie_ID']!="") {
+if(isset($_POST['tankowanie_ID'])AND $_POST['tankowanie_ID']!="") {
     $tankowanie_ID = $_POST['tankowanie_ID'];
 
     if (unlink('pliki/potwierdzeniaplatnosci/paliwo/' . $car_ID . '_' . $tankowanie_ID . '.pdf')) {
@@ -13,7 +13,7 @@ if($_POST['tankowanie_ID']!="") {
         echo 'Błąd. Spróbuj ponownie później.<br />';
     }
 }
-if($_POST['serwis_ID']!="") {
+if(isset($_POST['serwis_ID'])AND $_POST['serwis_ID']!="") {
     $serwis_ID = $_POST['serwis_ID'];
 
     if (unlink('pliki/potwierdzeniaplatnosci/serwis/' . $car_ID . '_' . $serwis_ID . '.pdf')) {
